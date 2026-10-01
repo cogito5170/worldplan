@@ -10,7 +10,8 @@ readme = "README.md"
 requires-python = ">=3.10"
 # 엔진은 표준 라이브러리만 쓴다. tzdata 는 시스템 zoneinfo 가 없는 이미지(slim 등)를 위한 것 --
 # zoneinfo 는 시스템 것을 먼저 쓰고, 없을 때만 이것을 쓴다. 사람에게 설치를 시키지 않는다.
-dependencies = ["tzdata>=2024.1"]
+# walp: 도우미의 잡담층(WALP). 표준 라이브러리만 쓰고 C++ 빌드가 없다. git 없이 받게 tar.gz 로
+dependencies = ["tzdata>=2024.1", "walp @ https://github.com/cogito5170/walp/archive/refs/heads/main.tar.gz"]
 
 [project.scripts]
 worldplan = "worldplan.cli:main"

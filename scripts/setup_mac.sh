@@ -69,6 +69,7 @@ if [ "$WITH_WT" = 1 ]; then
   "$VENV/bin/python" -m pip install -q --upgrade "$WT_SRC"
 fi
 ln -sf "$VENV/bin/worldplan" "$BIN_DIR/worldplan"
+ln -sf "$VENV/bin/walp-front" "$BIN_DIR/walp-front"     # worldplan 의 의존성으로 깔린 WALP 잡담층 도구
 [ "$WITH_WT" = 1 ] && ln -sf "$VENV/bin/worldtrip" "$BIN_DIR/worldtrip"
 case ":$PATH:" in
   *":$BIN_DIR:"*) ;;
@@ -135,6 +136,7 @@ cat <<EOF
   worldplan app --llm claude        # 도우미를 Claude 로
   worldplan app                     # auto: gemini 가 있으면 gemini, 로그인이 안 되면 claude 로 넘어간다
   worldplan ask "서울 오후 3시는 뉴욕 몇 시야?"
+  walp-front ask "안녕" --llm gemini  # WALP 잡담층을 아무 질문 앞에나(worldplan 밖에서도)
   gemini                            # Gemini CLI 에서 바로: "다음 주 kim 이랑 sam 30분 잡아줘" (worldplan 도구가 붙어 있다)
   worldtrip app                     # 세계여행 화면(같은 gentleMonster 화면 갈래)
 EOF

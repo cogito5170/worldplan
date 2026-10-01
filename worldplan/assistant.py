@@ -9,10 +9,11 @@
 
 앞단은 WORLDPLAN_FRONT 로 고른다 -- 기본은 eval/PREREG_앞단비교*.md 의 결정을 따른다.
 
-    WORLDPLAN_FRONT        off(Claude 만) | clock(시각 센서만) | walp(시각 센서 + WALP 잡담)
-                           봉인 v1: walp 는 잡담층이 일정 요청을 가로채(60 중 10) 안전 기준에서 졌다 -- 기본에서 뺐다
-    WORLDPLAN_WALP_HOME    SE 저장소 뿌리(walp 패키지가 있는 곳)
-    WORLDPLAN_WALP_MODEL   학습된 체계 JSON
+    WORLDPLAN_FRONT        walp(기본: 시각 센서 + WALP 잡담) | clock(시각 센서만) | off(LLM 만)
+                           봉인 v1: walp 는 잡담층이 일정 요청을 가로채(60 중 10) 사전등록 안전 기준에서 졌다.
+                           기본 walp 는 그 대가를 알고 고른 사용자 결정이다(2026-10-01)
+    WORLDPLAN_WALP_HOME    walp 가 pip 로 깔려 있지 않을 때 그 저장소 뿌리
+    WORLDPLAN_WALP_MODEL   다른 학습된 체계 JSON(없으면 walp 에 묶여 온 것)
     WORLDPLAN_CLAUDE       0 이면 Claude 를 부르지 않는다(앞단만)
     WORLDPLAN_CLAUDE_MODEL 기본: CLI 기본 모형
 
@@ -55,27 +56,27 @@ SYSTEM = (
 # ---------------- Control: WALP ----------------
 
 class Walp:
-    def __init__(self, home: str, model: str):
-        if home not in sys.path:
+    """WALP 잡담층 -- cogito5170/walp 의 `walp.llmfront.SmallTalk`(학습 체계가 묶여 있다, C++ 빌드 없음).
+    home: walp 패키지가 깔려 있지 않을 때 그 저장소 뿌리. model: 다른 학습 체계 JSON(없으면 묶여 온 것)."""
+
+    def __init__(self, home: "str | None" = None, model: "str | None" = None):
+        if home and home not in sys.path:
             sys.path.insert(0, home)
-        os.environ.setdefault("WALP_LLM", "0")          # WALP 자기 숙고층은 끈다 -- 숙고는 여기서 Claude 가 한다
-        from walp import behavior as B                   # noqa: PLC0415 -- 선택 의존
-        self.B = B
-        self.bus = B.버스짓기(B.from_json(json.loads(Path(model).read_text(encoding="utf-8"))))
+        from walp.llmfront import SmallTalk              # noqa: PLC0415 -- 선택 의존(pip 의존성으로 깔린다)
+        self.st = SmallTalk(model)
+        self.B = self.st.B
 
     def act(self, text: str) -> "tuple[str | None, bool]":
-        r = self.bus.돌기(text)
-        return (r.get("행한것") or {}).get("행위"), self.B.모름(r)
+        j = self.st.judge(text)
+        return j["act"], j["unknown"]
 
 
 def load_walp() -> "Walp | None":
-    home, model = os.environ.get("WORLDPLAN_WALP_HOME"), os.environ.get("WORLDPLAN_WALP_MODEL")
-    if not home or not model:
-        return None
+    """깔린 walp(또는 WORLDPLAN_WALP_HOME 의 저장소)를 부른다. 없으면 None -- 앞단은 시각 센서만 남는다(route 에 적힌다)."""
     try:
-        return Walp(home, model)
+        return Walp(os.environ.get("WORLDPLAN_WALP_HOME"), os.environ.get("WORLDPLAN_WALP_MODEL"))
     except Exception as e:                               # noqa: BLE001 -- 앞단이 없어도 도우미는 돈다
-        sys.stderr.write(f"WALP 를 못 불렀다({type(e).__name__}: {e}) -- 앞단 없이 돈다\n")
+        sys.stderr.write(f"WALP 를 못 불렀다({type(e).__name__}: {e}) -- 잡담층 없이 돈다\n")
         return None
 
 
@@ -475,8 +476,9 @@ def pick_llms(choice: "str | None" = None) -> list:
 
 # ---------------- 세 층을 잇는다 ----------------
 
-# off | clock | walp -- eval/PREREG_앞단비교*.md 의 결정을 따른다. v1: walp 는 H3 실패. v2: clock 은 H1 · H2 · H3 성립
-FRONT = os.environ.get("WORLDPLAN_FRONT", "clock")
+# off | clock | walp. 사전등록의 결정은 clock 이었다(v1: walp 는 H3 실패 -- 앞단 오답 18%).
+# 기본 walp 는 **사용자 결정**(2026-10-01): 토큰 -38~44% 를 위해 60 문장 중 9~10 개의 잡담 오답을 받아들인다.
+FRONT = os.environ.get("WORLDPLAN_FRONT", "walp")
 
 
 class Assistant:

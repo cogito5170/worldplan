@@ -95,11 +95,15 @@ gentleMonster `main` 에서 받아 `~/.cache/worldplan/frontend/` 에 둔다(Git
 `tools.core: []`(셸 · 파일 · 웹 내장 도구 없음) + 서버 `trust`. `--yolo` 는 안 쓴다. 시스템 프롬프트는 짧은 앱 전용
 (Gemini 는 `GEMINI_SYSTEM_MD`). 토큰은 두 CLI 의 JSON 에서 센다 — Gemini CLI 는 **비용을 내지 않으므로 `cost_usd` 가 비어 있다**(0 이 아니다).
 
-| `WORLDPLAN_FRONT` | 앞단 | 잰 것 (숙고층 Claude sonnet, CLI) |
+| `WORLDPLAN_FRONT` | 앞단 | 잰 것 (숙고층 Claude sonnet, CLI · 봉인 모음 60 문장 × 2) |
 |---|---|---|
-| `clock` (기본) | 시각 센서 — "서울 오후 3시는 뉴욕 몇 시" 처럼 답이 하나로 정해지는 물음만 엔진의 `world_clock` 으로 | 봉인 v2: 토큰 −14.6% · 응답 −10% · 앞단 오답 1/60 (사후에 고침) |
-| `walp` | 시각 센서 + WALP 행동 버스(잡담) | 봉인 v1: 토큰 −48% · 응답 −46% 였지만 **잡담층이 일정 요청을 가로챘다(60 중 10)** — 기본에서 뺐다 |
+| `walp` (**기본**) | 시각 센서 + **WALP 잡담층**([walp-front](https://github.com/cogito5170/walp), pip 의존성으로 깔린다) | 토큰 **−38~44%** · 그 대가로 **60 문장 중 9~10 개**를 잡담으로 잘못 답한다(일정이 섞인 "고마워~ 근데 latam 옮겨줘" 를 감사로) |
+| `clock` | 시각 센서만 | 토큰 −14.6% · 응답 −10% · 앞단 오답 1/60(사후에 고침) |
 | `off` | 없음 — 전부 숙고층 | 요청당 약 12.8k 토큰 · 6.7 초 · $0.015 |
+
+**기본 `walp` 는 사용자 결정이다(2026-10-01).** 사전등록의 안전 기준(앞단 오답 ≤ 5%)으로는 `clock` 이 뽑혔다 — `walp` 는
+그 기준에서 졌고, 그 대가를 알고 토큰 절감을 골랐다. 잡담 오답이 싫으면 `WORLDPLAN_FRONT=clock`.
+잡담층이 가로챈 말은 화면에 `WALP greet` 처럼 길이 보이므로, 엉뚱한 인사가 오면 말을 바꿔 다시 물으면 된다.
 
 **절감은 시각 질문의 몫뿐이다.** 시각 질문이 없는 사용이면 절감도 없다. 사전등록 · 봉인 모음 · 결과:
 [`eval/PREREG_앞단비교.md`](eval/PREREG_앞단비교.md) · [`eval/PREREG_앞단비교_v2.md`](eval/PREREG_앞단비교_v2.md).

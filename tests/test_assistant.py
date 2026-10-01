@@ -91,8 +91,34 @@ class Layers(unittest.TestCase):
         a = A.Assistant(walp=None, claude=FakeClaude(), front="walp")
         self.assertEqual(a.ask("안녕", sample(), NOW)["route"], "WALP 없음 -> Claude")
 
-    def test_기본은_사전등록의_결정(self):
+    def test_기본은_FRONT(self):
         self.assertEqual(A.Assistant(walp=None, claude=FakeClaude()).mode, A.FRONT)
+
+
+class RealWalp(unittest.TestCase):
+    """깔린 walp(pip 의존성) -- 없으면 WORLDPLAN_WALP_HOME 또는 옆의 ../walp 저장소. 다 없으면 건너뜀."""
+
+    @classmethod
+    def setUpClass(cls):
+        import os
+        from pathlib import Path
+        home = os.environ.get("WORLDPLAN_WALP_HOME") or str(Path(__file__).resolve().parents[2] / "walp")
+        try:
+            cls.w = A.Walp(home if Path(home, "walp", "llmfront.py").is_file() else None)
+        except ImportError:
+            raise unittest.SkipTest("walp 가 없다")
+
+    def test_기본은_WALP_잡담층(self):
+        self.assertEqual(A.FRONT, "walp")
+
+    def test_잡담은_토큰_0_나머지는_LLM(self):
+        fc = FakeClaude()
+        a = A.Assistant(walp=self.w, claude=fc, front="walp")
+        r = a.ask("안녕하세요", sample(), NOW)
+        self.assertEqual((r["by"], r["route"], r["tokens"]["total"]), ("walp", "WALP greet", 0))
+        r = a.ask("다음 주에 kim 이랑 sam 30분 회의 넣어줘", sample(), NOW)
+        self.assertEqual((r["by"], r["route"]), ("claude", "WALP 모름 -> Claude"))
+        self.assertEqual(len(fc.calls), 1)
 
 
 class Http(unittest.TestCase):
