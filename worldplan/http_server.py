@@ -1,6 +1,8 @@
 """HTTP 서버 -- 웹 프론트엔드 + REST API + MCP(Streamable HTTP) 를 한 포트에.
 
-    GET  /               웹 화면
+    GET  /...            화면(프론트엔드) 폴더의 파일 -- WORLDPLAN_FRONTEND 또는 --frontend. 없으면 / 가 안내 페이지.
+                         화면은 gentleMonster 의 gentle_monster/apps/worldplan/ 이다(`worldplan app` 이 받아 붙인다)
+    GET  /sample.json    예시 요청(엔진의 것)
     GET  /healthz        살아 있나 + 원장 사슬이 성한가
     POST /api/plan       {request}
     POST /api/verify     {request, assignments, claimed_cost?}
@@ -17,11 +19,13 @@
     WORLDPLAN_TOKEN             세우면 /api · /mcp 에 Authorization: Bearer <토큰> 이 필요하다
     WORLDPLAN_ALLOWED_ORIGINS   쉼표로. 브라우저 Origin 헤더 허용 목록(같은 호스트는 늘 허용)
     WORLDPLAN_LEDGER_ROOT       원장 자리(기본 ./data)
+    WORLDPLAN_FRONTEND          화면 폴더
 """
 from __future__ import annotations
 
 import hmac
 import json
+import mimetypes
 import os
 import sys
 import uuid
@@ -32,12 +36,23 @@ from . import engine, ledger, mcp
 
 STATIC = Path(__file__).resolve().parent / "static"
 MAX_BODY = 1_000_000
-_FILES = {"/": ("index.html", "text/html; charset=utf-8"),
-          "/app.js": ("app.js", "text/javascript; charset=utf-8"),
-          "/app.css": ("app.css", "text/css; charset=utf-8"),
-          "/tokens.css": ("tokens.css", "text/css; charset=utf-8"),
-          "/tokens.json": ("tokens.json", "application/json; charset=utf-8"),
-          "/sample.json": ("sample.json", "application/json; charset=utf-8")}
+MIME = {".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8",
+        ".json": "application/json; charset=utf-8", ".svg": "image/svg+xml", ".webmanifest": "application/manifest+json",
+        ".md": "text/plain; charset=utf-8"}
+NO_FRONTEND = """<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>worldplan engine</title></head><body>
+<h1>worldplan 엔진은 돌고 있다</h1>
+<p>화면(프론트엔드)이 붙지 않았다. 화면은 gentleMonster 저장소의 <code>gentle_monster/apps/worldplan/</code> 이다.</p>
+<p><code>worldplan app</code> 으로 띄우면 받아 와서 붙인다. 이미 있으면 <code>WORLDPLAN_FRONTEND=&lt;그 폴더&gt;</code>.</p>
+<p>API 와 MCP 는 지금도 쓸 수 있다: <code>POST /api/plan</code> · <code>POST /mcp</code>.</p></body></html>"""
+
+
+def frontend_dir() -> "Path | None":
+    d = os.environ.get("WORLDPLAN_FRONTEND")
+    if not d:
+        return None
+    p = Path(d).resolve()
+    return p if (p / "index.html").is_file() else None
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -117,9 +132,8 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         path = self.path.split("?", 1)[0]
-        if path in _FILES:
-            name, ctype = _FILES[path]
-            self._send(200, (STATIC / name).read_bytes(), ctype)
+        if path == "/sample.json":
+            self._send(200, (STATIC / "sample.json").read_bytes(), MIME[".json"])
         elif path == "/healthz":
             self._json(200, {"ok": True, "engine": engine.VERSION, "ledger": ledger.verify()})
         elif path == "/api/ledger":
@@ -131,8 +145,27 @@ class Handler(BaseHTTPRequestHandler):
         elif path == "/mcp":
             self._json(405, {"error": "이 서버는 서버발 SSE 스트림을 열지 않는다 -- POST 를 써라"},
                        extra={"Allow": "POST"})
-        else:
+        elif path.startswith("/api/"):
             self._json(404, {"error": "없다"})
+        else:
+            self._static(path)
+
+    def _static(self, path: str):
+        root = frontend_dir()
+        if root is None:
+            if path in ("/", "/index.html"):
+                self._send(200, NO_FRONTEND.encode("utf-8"), MIME[".html"])
+            else:
+                self._json(404, {"error": "없다 (프론트엔드가 붙지 않았다)"})
+            return
+        rel = "index.html" if path in ("", "/") else path.lstrip("/")
+        f = (root / rel).resolve()
+        # 폴더 밖(../)과 숨김 파일(.source.json 등)은 내주지 않는다
+        if root not in f.parents or not f.is_file() or any(p.startswith(".") for p in Path(rel).parts):
+            self._json(404, {"error": "없다"})
+            return
+        ctype = MIME.get(f.suffix) or mimetypes.guess_type(f.name)[0] or "application/octet-stream"
+        self._send(200, f.read_bytes(), ctype, {"Cache-Control": "no-cache"} if f.name == "index.html" else None)
 
     def do_DELETE(self):
         self._json(405, {"error": "세션 상태를 두지 않는다"}, extra={"Allow": "POST"})
@@ -187,14 +220,24 @@ class Handler(BaseHTTPRequestHandler):
         self._json(200, resp, extra=extra)
 
 
-def serve(host=None, port=None):
+def make_server(host=None, port=None, frontend=None) -> ThreadingHTTPServer:
+    if frontend:
+        os.environ["WORLDPLAN_FRONTEND"] = str(frontend)
     host = host or os.environ.get("WORLDPLAN_HOST", "127.0.0.1")
-    port = int(port or os.environ.get("WORLDPLAN_PORT", "8765"))
+    port = int(port if port is not None else os.environ.get("WORLDPLAN_PORT", "8765"))
     if host not in ("127.0.0.1", "localhost", "::1") and not os.environ.get("WORLDPLAN_TOKEN"):
         sys.stderr.write("경고: 밖으로 열린 주소인데 WORLDPLAN_TOKEN 이 없다 -- 누구나 원장에 쓸 수 있다\n")
+    if os.environ.get("WORLDPLAN_FRONTEND") and frontend_dir() is None:
+        sys.stderr.write(f"경고: WORLDPLAN_FRONTEND={os.environ['WORLDPLAN_FRONTEND']} 에 index.html 이 없다 -- 안내 페이지를 낸다\n")
     httpd = ThreadingHTTPServer((host, port), Handler)
     httpd.daemon_threads = True
-    sys.stderr.write(f"worldplan {engine.VERSION} -- http://{host}:{port}/  (MCP: POST /mcp)\n")
+    return httpd
+
+
+def serve(host=None, port=None, frontend=None):
+    httpd = make_server(host, port, frontend)
+    h, p = httpd.server_address[:2]
+    sys.stderr.write(f"worldplan {engine.VERSION} -- http://{h}:{p}/  (MCP: POST /mcp · 화면: {frontend_dir() or '없음'})\n")
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:

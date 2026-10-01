@@ -325,44 +325,152 @@ def _zero() -> dict:
     return {"input": 0, "cache_creation": 0, "cache_read": 0, "output": 0, "total": 0}
 
 
-class ClaudeCLI:
-    """`claude -p` 한 번 = 한 숙고. worldplan MCP(stdio) 도구만 쓴다 -- 셸 · 파일 · 웹 도구는 없다."""
+def _servers() -> dict:
+    """숙고층이 쓸 MCP 서버(stdio). worldplan 은 늘, worldtrip 은 깔려 있으면(WORLDPLAN_WORLDTRIP=0 이면 뺀다)."""
+    # 패키지를 찾는 길은 cwd(python -m 은 작업 폴더를 sys.path 에 넣는다)와 PYTHONPATH 둘 다 준다.
+    # Gemini CLI 는 PYTHONPATH 를 '위험한 환경 변수' 로 막는다(0.62 실측: 막히면 Disconnected) -- 그쪽은 cwd 로 찾는다
+    import importlib.util
+    root = str(Path(__file__).resolve().parent.parent)
+    env = {"PYTHONPATH": root}
+    if os.environ.get("WORLDPLAN_LEDGER_ROOT"):
+        env["WORLDPLAN_LEDGER_ROOT"] = os.environ["WORLDPLAN_LEDGER_ROOT"]
+    out = {"worldplan": {"command": sys.executable, "args": ["-m", "worldplan", "mcp"], "cwd": root, "env": env}}
+    spec = importlib.util.find_spec("worldtrip") if os.environ.get("WORLDPLAN_WORLDTRIP", "auto") != "0" else None
+    if spec is not None and spec.origin:
+        wt = str(Path(spec.origin).resolve().parent.parent)
+        out["worldtrip"] = {"command": sys.executable, "args": ["-m", "worldtrip", "mcp"], "cwd": wt, "env": {"PYTHONPATH": wt}}
+    return out
 
-    def __init__(self, model: "str | None" = None, timeout: int = 300):
-        self.model = model or os.environ.get("WORLDPLAN_CLAUDE_MODEL")
+
+class _CLI:
+    """LLM CLI 한 번 = 한 숙고. MCP 도구만 쓴다 -- 셸 · 파일 · 웹 도구는 없다. 빈 자리(임시 폴더)에서 돈다."""
+    name = "?"
+    binary = "?"
+
+    def __init__(self, model: "str | None" = None, timeout: int = 300, binary: "str | None" = None):
+        self.model = model
         self.timeout = timeout
-        self.dir = Path(tempfile.mkdtemp(prefix="worldplan-claude-"))   # 빈 자리에서 돈다 -- 아무 CLAUDE.md 도 안 읽는다
-        env = {"PYTHONPATH": str(Path(__file__).resolve().parent.parent)}
-        if os.environ.get("WORLDPLAN_LEDGER_ROOT"):
-            env["WORLDPLAN_LEDGER_ROOT"] = os.environ["WORLDPLAN_LEDGER_ROOT"]
+        self.binary = binary or self.binary
+        self.dir = Path(tempfile.mkdtemp(prefix=f"worldplan-{self.name.lower()}-"))
+        self.servers = _servers()
+
+    def _run(self, cmd: list, env: "dict | None" = None) -> "tuple[dict | None, dict | None]":
+        try:
+            p = subprocess.run(cmd, cwd=self.dir, capture_output=True, text=True, timeout=self.timeout,
+                               stdin=subprocess.DEVNULL, env={**os.environ, **(env or {})})
+        except subprocess.TimeoutExpired:
+            return None, {"answer": f"{self.name} 가 제때 답하지 못했다.", "error": "timeout", "tokens": _zero()}
+        except FileNotFoundError:
+            return None, {"answer": f"{self.binary} 를 찾지 못했다(설치 안 됨).", "error": "not_found", "tokens": _zero()}
+        # 답은 stdout 에, 오류 JSON 은 stderr 에 온다(gemini 0.62 실측: 로그인 없음 -> stdout 빈칸, stderr 에 {"error": ...})
+        for out in (p.stdout, p.stderr):
+            i = (out or "").find("{")
+            if i < 0:
+                continue
+            try:
+                return json.loads(out[i:]), None
+            except json.JSONDecodeError:
+                continue
+        tail = (p.stderr or p.stdout or "").strip()[-300:]
+        return None, {"answer": f"{self.name} 를 부르지 못했다.", "error": "bad_output", "detail": tail, "tokens": _zero()}
+
+
+class ClaudeCLI(_CLI):
+    """`claude -p` (Claude Code CLI)."""
+    name, binary = "Claude", "claude"
+
+    def __init__(self, model: "str | None" = None, timeout: int = 300, binary: "str | None" = None):
+        super().__init__(model or os.environ.get("WORLDPLAN_CLAUDE_MODEL"), timeout, binary)
         self.mcp = self.dir / "mcp.json"
-        self.mcp.write_text(json.dumps({"mcpServers": {"worldplan": {
-            "command": sys.executable, "args": ["-m", "worldplan", "mcp"], "env": env}}}), encoding="utf-8")
+        self.mcp.write_text(json.dumps({"mcpServers": self.servers}), encoding="utf-8")
 
     def ask(self, text: str, request: "dict | None", today: str, now_utc: "str | None" = None) -> dict:
         sysp = SYSTEM.format(today=today, request=json.dumps(request or {}, ensure_ascii=False, separators=(",", ":")))
         prompt = f"[now: {now_utc}]\n{text}" if now_utc else text
-        cmd = ["claude", "-p", prompt, "--output-format", "json", "--system-prompt", sysp,
+        cmd = [self.binary, "-p", prompt, "--output-format", "json", "--system-prompt", sysp,
                "--strict-mcp-config", "--mcp-config", str(self.mcp), "--tools", "",
-               "--allowedTools", "mcp__worldplan", "--setting-sources", "", "--no-session-persistence"]
+               "--allowedTools", *[f"mcp__{n}" for n in self.servers],
+               "--setting-sources", "", "--no-session-persistence"]
         if self.model:
             cmd += ["--model", self.model]
-        try:
-            p = subprocess.run(cmd, cwd=self.dir, capture_output=True, text=True, timeout=self.timeout,
-                               stdin=subprocess.DEVNULL)
-            d = json.loads(p.stdout)
-        except subprocess.TimeoutExpired:
-            return {"answer": "Claude 가 제때 답하지 못했다.", "error": "timeout", "tokens": _zero()}
-        except (json.JSONDecodeError, FileNotFoundError) as e:
-            return {"answer": "Claude 를 부르지 못했다.", "error": type(e).__name__, "tokens": _zero()}
+        d, err = self._run(cmd)
+        if err:
+            return err
         u = d.get("usage") or {}
         tok = {"input": u.get("input_tokens") or 0, "cache_creation": u.get("cache_creation_input_tokens") or 0,
                "cache_read": u.get("cache_read_input_tokens") or 0, "output": u.get("output_tokens") or 0}
         tok["total"] = sum(tok.values())
-        return {"answer": d.get("result") or "", "tokens": tok, "cost_usd": d.get("total_cost_usd") or 0.0,
-                "api_ms": d.get("duration_api_ms"), "turns": d.get("num_turns"),
-                "model": next(iter(d.get("modelUsage") or {}), None),
-                **({"error": "is_error"} if d.get("is_error") else {})}
+        out = {"answer": d.get("result") or "", "tokens": tok, "cost_usd": d.get("total_cost_usd") or 0.0,
+               "api_ms": d.get("duration_api_ms"), "turns": d.get("num_turns"),
+               "model": next(iter(d.get("modelUsage") or {}), None)}
+        if d.get("is_error"):
+            msg = str(d.get("result") or "")
+            out["error"] = "auth" if re.search(r"log ?in|auth|api key", msg, re.I) else "is_error"
+        return out
+
+
+class GeminiCLI(_CLI):
+    """`gemini -p` (Gemini CLI). MCP 는 임시 폴더의 .gemini/settings.json 으로 준다(trust: 확인 없이 도구를 쓴다).
+    tools.core = [] 이라 셸 · 파일 · 웹 같은 내장 도구는 하나도 안 올라간다. 시스템 프롬프트는 GEMINI_SYSTEM_MD 파일로 바꾼다.
+    로그인은 사용자의 것(~/.gemini 의 Google 로그인 또는 GEMINI_API_KEY)을 그대로 쓴다. 비용은 CLI 가 내지 않는다 -- None."""
+    name, binary = "Gemini", "gemini"
+
+    def __init__(self, model: "str | None" = None, timeout: int = 300, binary: "str | None" = None):
+        super().__init__(model or os.environ.get("WORLDPLAN_GEMINI_MODEL"), timeout, binary)
+        g = self.dir / ".gemini"
+        g.mkdir()
+        servers = {n: {**c, "env": {k: v for k, v in c["env"].items() if k != "PYTHONPATH"}, "trust": True}
+                   for n, c in self.servers.items()}
+        (g / "settings.json").write_text(json.dumps({"mcpServers": servers, "tools": {"core": []}}), encoding="utf-8")
+        self.sysmd = self.dir / "system.md"
+
+    def ask(self, text: str, request: "dict | None", today: str, now_utc: "str | None" = None) -> dict:
+        self.sysmd.write_text(SYSTEM.format(today=today, request=json.dumps(request or {}, ensure_ascii=False,
+                                                                             separators=(",", ":"))), encoding="utf-8")
+        prompt = f"[now: {now_utc}]\n{text}" if now_utc else text
+        cmd = [self.binary, "-p", prompt, "--output-format", "json", "--skip-trust",
+               "--allowed-mcp-server-names", *self.servers]
+        if self.model:
+            cmd += ["-m", self.model]
+        d, err = self._run(cmd, {"GEMINI_SYSTEM_MD": str(self.sysmd)})
+        if err:
+            return err
+        if d.get("error"):
+            e = d["error"]
+            msg = str(e.get("message", ""))
+            auth = e.get("code") == 41 or re.search(r"auth", msg, re.I)
+            return {"answer": "Gemini 로그인이 필요하다 -- 터미널에서 `gemini` 를 한 번 띄워 로그인하거나 GEMINI_API_KEY 를 세워라."
+                    if auth else f"Gemini 오류: {msg[:200]}", "error": "auth" if auth else "is_error", "tokens": _zero()}
+        models = ((d.get("stats") or {}).get("models") or {})
+        t = {"prompt": 0, "cached": 0, "candidates": 0, "thoughts": 0, "total": 0}
+        api_ms, calls = 0, 0
+        for m in models.values():
+            for k in t:
+                t[k] += (m.get("tokens") or {}).get(k) or 0
+            api_ms += (m.get("api") or {}).get("totalLatencyMs") or 0
+            calls += (m.get("api") or {}).get("totalRequests") or 0
+        tok = {"input": max(0, t["prompt"] - t["cached"]), "cache_creation": 0, "cache_read": t["cached"],
+               "output": t["candidates"] + t["thoughts"]}
+        tok["total"] = t["total"] or sum(tok.values())
+        return {"answer": d.get("response") or "", "tokens": tok, "cost_usd": None, "api_ms": api_ms or None,
+                "turns": calls or None, "model": next(iter(models), None)}
+
+
+BACKENDS = {"claude": ClaudeCLI, "gemini": GeminiCLI}
+
+
+def pick_llms(choice: "str | None" = None) -> list:
+    """WORLDPLAN_LLM = auto | claude | gemini | claude,gemini (앞이 먼저, 뒤는 로그인 · 설치 실패 때만).
+    auto: 깔린 것 -- gemini 먼저, 그다음 claude."""
+    import shutil
+    choice = (choice or os.environ.get("WORLDPLAN_LLM") or "auto").lower()
+    names = ["gemini", "claude"] if choice == "auto" else [x.strip() for x in choice.split(",") if x.strip()]
+    bad = [n for n in names if n not in BACKENDS]
+    if bad:
+        raise ValueError(f"WORLDPLAN_LLM: auto | claude | gemini, got {bad}")
+    if choice == "auto":
+        names = [n for n in names if shutil.which(BACKENDS[n].binary)]
+    return [BACKENDS[n]() for n in names]
 
 
 # ---------------- 세 층을 잇는다 ----------------
@@ -372,8 +480,9 @@ FRONT = os.environ.get("WORLDPLAN_FRONT", "clock")
 
 
 class Assistant:
-    def __init__(self, walp: "Walp | None | bool" = True, claude: "ClaudeCLI | None | bool" = True,
-                 front: "bool | str | None" = None):
+    def __init__(self, walp: "Walp | None | bool" = True, claude=True, front: "bool | str | None" = None, llm=None):
+        """llm: 숙고층(들) -- 하나 또는 목록. 앞이 먼저, 로그인 · 설치 실패면 다음으로. 없으면 WORLDPLAN_LLM 으로 고른다.
+        claude: 예전 이름(같은 뜻). False/None 이면 숙고층 없음."""
         front = FRONT if front is None else front
         front = {True: "walp", False: "off"}.get(front, front)
         if front not in ("off", "clock", "walp"):
@@ -381,9 +490,11 @@ class Assistant:
         self.mode = front
         self.front = front != "off"
         self.walp = (load_walp() if walp is True else (walp or None)) if front == "walp" else None
-        if claude is True:
-            claude = None if os.environ.get("WORLDPLAN_CLAUDE") == "0" else ClaudeCLI()
-        self.claude = claude or None
+        llm = claude if llm is None else llm
+        if llm is True:
+            llm = [] if os.environ.get("WORLDPLAN_CLAUDE") == "0" or os.environ.get("WORLDPLAN_LLM") == "off" else pick_llms()
+        self.llms = [x for x in (llm if isinstance(llm, (list, tuple)) else [llm]) if x]
+        self.claude = self.llms[0] if self.llms else None          # 예전 이름 -- 첫 숙고층
 
     def ask(self, text: str, request: "dict | None" = None, now: "dt.datetime | None" = None) -> dict:
         t0 = time.perf_counter()
@@ -406,14 +517,20 @@ class Assistant:
                 act, unknown = self.walp.act(text)
                 if act in SMALL and not unknown:
                     return {"answer": REPLY[act], "by": "walp", "route": f"WALP {act}", "act": act}
-        if not self.claude:
-            return {"answer": "이 말은 Claude 가 답해야 하는데 Claude 가 꺼져 있다.", "by": "none",
-                    "route": "Claude 꺼짐", "act": act}
-        r = self.claude.ask(text, request, now.date().isoformat(),
-                            now.astimezone(dt.timezone.utc).isoformat(timespec="minutes"))
-        route = {"off": "Claude 만", "clock": "시각 센서 못 정함 -> Claude",
-                 "walp": "WALP 모름 -> Claude" if self.walp else "WALP 없음 -> Claude"}[self.mode]
-        return {**r, "by": "claude", "route": route, "act": act}
+        if not self.llms:
+            return {"answer": "이 말은 LLM(Claude 또는 Gemini)이 답해야 하는데 쓸 수 있는 것이 없다 -- "
+                              "claude 나 gemini CLI 를 깔고 로그인하라.", "by": "none", "route": "LLM 없음", "act": act}
+        tried = []
+        for llm in self.llms:
+            name = getattr(llm, "name", "Claude")
+            r = llm.ask(text, request, now.date().isoformat(), now.astimezone(dt.timezone.utc).isoformat(timespec="minutes"))
+            tried.append(f"{name} {r['error']}" if r.get("error") in ("auth", "not_found") else name)
+            if r.get("error") not in ("auth", "not_found"):
+                break
+        head = {"off": "", "clock": "시각 센서 못 정함 -> ",
+                "walp": "WALP 모름 -> " if self.walp else "WALP 없음 -> "}[self.mode]
+        route = head + " -> ".join(tried) if self.mode != "off" else " -> ".join(tried) + " 만"
+        return {**r, "by": name.lower(), "llm": name, "route": route, "act": act}
 
 
 _DEFAULT: "Assistant | None" = None
