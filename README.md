@@ -20,7 +20,7 @@ se_new 의 정책을 그대로 옮겼다:
 
 ```bash
 pip install .                       # 또는 python3 -m worldplan ... (설치 없이)
-worldplan serve                     # http://127.0.0.1:8765/  웹 화면 + REST + MCP(POST /mcp)
+worldplan serve                     # http://127.0.0.1:8765/  웹 화면 + 도우미 + REST + MCP(POST /mcp)
 worldplan mcp                       # MCP stdio
 worldplan plan worldplan/static/sample.json     # 종료 코드 0=ACCEPT 1=REJECT
 worldplan ledger                    # 원장 사슬 검사
@@ -32,6 +32,38 @@ Docker:
 docker build -t worldplan .
 docker run -p 8765:8765 -e WORLDPLAN_TOKEN=$(openssl rand -hex 16) -v worldplan-data:/data worldplan
 ```
+
+### 화면
+
+폼으로 사람(시간대 · 일하는 시간 · 선호 시간)과 일정(길이 · 필수/선택 · 선후)을 짓고 '계획 세우기' 를 누른다.
+폼과 요청 JSON 은 한 벌이다 — 폼에 없는 칸(휴일 · 체류 · 바쁜 시간 · 하루 상한)은 '고급' 의 JSON 에서 넣고, 폼을 고쳐도 남는다.
+위에는 요청 속 사람들의 시간대 시계가 돈다(브라우저 안에서, 서버 없이).
+
+색 · 글자 크기 · 간격은 [gentleMonster](https://github.com/cogito5170/gentleMonster) frontend engine 이 지었다
+(`ui_theme.py` → `static/tokens.css` · `tokens.json`). 실행에는 gentleMonster 가 필요 없다 — 지어 둔 두 파일만 쓴다.
+
+```bash
+GENTLE_MONSTER_HOME=/path/to/gentleMonster worldplan ui-build   # 토큰 다시 짓기
+GENTLE_MONSTER_HOME=/path/to/gentleMonster worldplan ui-check   # 그 심판(Chromium 375/1440 px)으로 재기, 0 = V 전부 성립
+```
+
+`ui-check` 는 화면을 파일 하나로 묶어 gentleMonster 의 심판에 올린다. 2026-10-01: **V 11개 전부 성립**
+(가로 넘침 없음 · 그려진 글자 대비 최소 4.88 · 휴대폰 최소 글자 12 px 이상 · 밖으로 나가는 요청 0 · JS 오류 0 · 제목 위계).
+J(취향 점수)는 0.41 — 이 화면은 잡지가 아니라 도구라서 극적 대비 · 여백을 쫓지 않았다.
+
+### 도우미 (물어보기)
+
+말로 묻는다. Claude(`claude -p`)가 worldplan MCP 도구로 답하고, 그 앞에 얇은 앞단이 선다.
+
+| `WORLDPLAN_FRONT` | 앞단 | 잰 것 |
+|---|---|---|
+| `clock` (기본) | 시각 센서 — "서울 오후 3시는 뉴욕 몇 시" 처럼 답이 하나로 정해지는 물음만 엔진의 `world_clock` 으로 | 봉인 v2: 토큰 −14.6% · 응답 −10% · 앞단 오답 1/60 (사후에 고침) |
+| `walp` | 시각 센서 + WALP 행동 버스(잡담) | 봉인 v1: 토큰 −48% · 응답 −46% 였지만 **잡담층이 일정 요청을 가로챘다(60 중 10)** — 기본에서 뺐다 |
+| `off` | 없음 — 전부 Claude | 요청당 약 12.8k 토큰 · 6.7 초 · $0.015 (sonnet, CLI) |
+
+**절감은 시각 질문의 몫뿐이다.** 시각 질문이 없는 사용이면 절감도 없다. 사전등록 · 봉인 모음 · 결과:
+[`eval/PREREG_앞단비교.md`](eval/PREREG_앞단비교.md) · [`eval/PREREG_앞단비교_v2.md`](eval/PREREG_앞단비교_v2.md).
+도우미에는 `claude` CLI(로그인됨)가 있어야 한다. `WORLDPLAN_CLAUDE=0` 이면 Claude 를 부르지 않는다.
 
 ### MCP 클라이언트에 붙이기
 
@@ -60,6 +92,9 @@ Claude Desktop 등 `mcpServers` JSON:
 | `WORLDPLAN_TOKEN` | 없음 | 세우면 `/api/*` · `/mcp` 에 `Authorization: Bearer` 필요 |
 | `WORLDPLAN_ALLOWED_ORIGINS` | 없음 | 브라우저 Origin 허용(같은 호스트는 늘 허용). 다른 Origin 은 403 — DNS 리바인딩 방지 |
 | `WORLDPLAN_LEDGER_ROOT` | ./data | 원장 자리 |
+| `WORLDPLAN_FRONT` | clock | 도우미 앞단: `off` · `clock` · `walp` (위 표) |
+| `WORLDPLAN_CLAUDE_MODEL` | CLI 기본 | 도우미의 Claude 모형 |
+| `WORLDPLAN_WALP_HOME` · `WORLDPLAN_WALP_MODEL` | 없음 | `walp` 앞단일 때: SE 저장소 뿌리 · 학습된 체계 JSON |
 
 ## 요청 꼴
 
@@ -83,7 +118,7 @@ J5 선후+gap · J6 하루 상한 · J7 생성자 비용 = 심판 비용.
 
 | 무엇 | 결과 | 어떻게 · 무엇이 이걸 깨나 |
 |---|---|---|
-| 검사 | 42개 통과 | `python3 -m unittest discover -s tests -t .` |
+| 검사 | 52개 통과 | `python3 -m unittest discover -s tests -t .` |
 | 최적성 독립 대조 | 무작위 60문제(가능 26 · 불가능 34)에서 생성자 = 전수탐색 | 전수탐색은 **심판만으로** 가능·비용을 잰다. 사소한 설명 막기: 가능/불가능이 각각 10/5개 미만이면 검사가 실패한다. 비용>0 인 경우 19개 |
 | 그 대조가 빨개질 수 있나 | 생성자 비용 가중치를 10→9 로 바꾸면 8/60 불일치, 탐색 노드를 5로 자르면 19/60 불일치 | 돌연변이를 넣어 확인. 작은 문제(2~3명, 1~3개, 120분 격자)에 대해서만이다 |
 | 망가뜨린 계획 | 13가지 망가뜨림 전부 심판이 해당 J 로 거절(J0–J7 전부 한 번 이상) | `tests/test_judge_catches.py` |

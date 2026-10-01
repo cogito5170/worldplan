@@ -54,6 +54,9 @@ class Clock(unittest.TestCase):
                   "11월 1일 새벽 1시 30분 뉴욕은 서울 몇 시?",      # 가을 DST 로 두 번 있는 시각
                   "서울 오후 3시는 몇 시야",                        # 장소 하나
                   "지금 오후 3시인데 뉴욕은 몇 시?",               # '지금' 과 시각이 같이
+                  "If it's 8pm on Oct 31 2026 in New York, what time is it in London?",   # 못 읽는 날짜(봉인 v2 #45)
+                  "금요일 오후 3시 서울은 뉴욕 몇 시?",            # 어느 금요일인지 모른다
+                  "다음주 월요일 오전 9시 베를린은 서울 몇 시",
                   "안녕"):
             self.assertIsNone(A.clock_answer(q, sample(), NOW), q)
 

@@ -1,0 +1,4779 @@
+{
+ "summary": {
+  "n": 60,
+  "treatment": "K",
+  "C": {
+   "tokens_sum": 768265,
+   "tokens_mean": 12804.416666666666,
+   "cost_usd": 0.8986,
+   "ms_mean": 6655.406666666667,
+   "ms_median": 5433.2,
+   "claude_calls": 60,
+   "front_errors": 0,
+   "claude_errors": 0,
+   "front_error_rate": 0.0,
+   "front_error_wilson95": 0.043154146670913995
+  },
+  "K": {
+   "tokens_sum": 655872,
+   "tokens_mean": 10931.2,
+   "cost_usd": 0.7321,
+   "ms_mean": 5978.716666666666,
+   "ms_median": 5132.2,
+   "claude_calls": 53,
+   "front_errors": 1,
+   "claude_errors": 0,
+   "front_error_rate": 0.016666666666666666,
+   "front_error_wilson95": 0.07132240212435173
+  },
+  "W": {
+   "tokens_sum": 458716,
+   "tokens_mean": 7645.266666666666,
+   "cost_usd": 0.5439,
+   "ms_mean": 4190.238333333334,
+   "ms_median": 4427.1,
+   "claude_calls": 36,
+   "front_errors": 10,
+   "claude_errors": 0,
+   "front_error_rate": 0.16666666666666666,
+   "front_error_wilson95": 0.2597949630650397
+  },
+  "R": {
+   "tokens_sum": 551425,
+   "tokens_mean": 9190.416666666666,
+   "cost_usd": 0.6614,
+   "ms_mean": 5088.279999999999,
+   "ms_median": 4765.6,
+   "claude_calls": 45,
+   "front_errors": 6,
+   "claude_errors": 0,
+   "front_error_rate": 0.1,
+   "front_error_wilson95": 0.1819287914358343
+  },
+  "H1": {
+   "mean_diff_tokens": -1873.2166666666667,
+   "upper95": -766.5333333333333,
+   "holds": true
+  },
+  "H2": {
+   "mean_diff_ms": -676.69,
+   "upper95": -245.1816666666667,
+   "holds": true
+  },
+  "H3": {
+   "rate": 0.016666666666666666,
+   "holds": true
+  },
+  "decision_front_on": true,
+  "null_check_escalated": {
+   "n": 53,
+   "mean_diff_tokens": -56.075471698113205,
+   "mean_diff_ms": -32.890566037735844
+  },
+  "by_category": {
+   "form": {
+    "n": 8,
+    "C_tok": 60477,
+    "C_ms": 33225.1,
+    "C_front": 0,
+    "C_front_err": 0,
+    "K_tok": 60549,
+    "K_ms": 32607.0,
+    "K_front": 0,
+    "K_front_err": 0,
+    "W_tok": 37616,
+    "W_ms": 19773.399999999998,
+    "W_front": 3,
+    "W_front_err": 3,
+    "R_tok": 52866,
+    "R_ms": 29155.699999999997,
+    "R_front": 1,
+    "R_front_err": 1
+   },
+   "mixed": {
+    "n": 7,
+    "C_tok": 133907,
+    "C_ms": 72128.5,
+    "C_front": 0,
+    "C_front_err": 0,
+    "K_tok": 143120,
+    "K_ms": 72592.6,
+    "K_front": 0,
+    "K_front_err": 0,
+    "W_tok": 56274,
+    "W_ms": 29795.5,
+    "W_front": 4,
+    "W_front_err": 4,
+    "R_tok": 56818,
+    "R_ms": 32896.6,
+    "R_front": 4,
+    "R_front_err": 4
+   },
+   "knowledge": {
+    "n": 8,
+    "C_tok": 77484,
+    "C_ms": 46036.6,
+    "C_front": 0,
+    "C_front_err": 0,
+    "K_tok": 77615,
+    "K_ms": 45337.00000000001,
+    "K_front": 0,
+    "K_front_err": 0,
+    "W_tok": 69895,
+    "W_ms": 41602.6,
+    "W_front": 1,
+    "W_front_err": 1,
+    "R_tok": 77484,
+    "R_ms": 46036.6,
+    "R_front": 0,
+    "R_front_err": 0
+   },
+   "clock": {
+    "n": 11,
+    "C_tok": 171292,
+    "C_ms": 59250.2,
+    "C_front": 0,
+    "C_front_err": 0,
+    "C_clock_ok": 11,
+    "K_tok": 61886,
+    "K_ms": 20403.0,
+    "K_front": 7,
+    "K_front_err": 1,
+    "K_clock_ok": 10,
+    "W_tok": 61871,
+    "W_ms": 20390.6,
+    "W_front": 7,
+    "W_front_err": 1,
+    "W_clock_ok": 10,
+    "R_tok": 61871,
+    "R_ms": 20421.8,
+    "R_front": 7,
+    "R_front_err": 1,
+    "R_clock_ok": 10
+   },
+   "plan": {
+    "n": 10,
+    "C_tok": 202981,
+    "C_ms": 116545.29999999999,
+    "C_front": 0,
+    "C_front_err": 0,
+    "K_tok": 190245,
+    "K_ms": 110020.2,
+    "K_front": 0,
+    "K_front_err": 0,
+    "W_tok": 171901,
+    "W_ms": 100408.39999999998,
+    "W_front": 1,
+    "W_front_err": 1,
+    "R_tok": 202981,
+    "R_ms": 116545.29999999999,
+    "R_front": 0,
+    "R_front_err": 0
+   },
+   "smalltalk": {
+    "n": 8,
+    "C_tok": 60965,
+    "C_ms": 32791.4,
+    "C_front": 0,
+    "C_front_err": 0,
+    "K_tok": 61113,
+    "K_ms": 37934.299999999996,
+    "K_front": 0,
+    "K_front_err": 0,
+    "W_tok": 0,
+    "W_ms": 96.50000000000001,
+    "W_front": 8,
+    "W_front_err": 0,
+    "R_tok": 38246,
+    "R_ms": 20893.5,
+    "R_front": 3,
+    "R_front_err": 0
+   },
+   "out_of_scope": {
+    "n": 8,
+    "C_tok": 61159,
+    "C_ms": 39347.3,
+    "C_front": 0,
+    "C_front_err": 0,
+    "K_tok": 61344,
+    "K_ms": 39828.9,
+    "K_front": 0,
+    "K_front_err": 0,
+    "W_tok": 61159,
+    "W_ms": 39347.3,
+    "W_front": 0,
+    "W_front_err": 0,
+    "R_tok": 61159,
+    "R_ms": 39347.3,
+    "R_front": 0,
+    "R_front_err": 0
+   }
+  },
+  "model": [
+   "claude-sonnet-5-5"
+  ],
+  "sealed_sha256": "9bc0251ceca0e5e7ae3a6c365fbf1bb2d0e4521e231af892d52b760f0b9a7cc5"
+ },
+ "rows": [
+  {
+   "i": 0,
+   "cat": "form",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1361,
+     "cache_read": 6062,
+     "output": 78,
+     "total": 7503
+    },
+    "cost_usd": 0.0074404,
+    "ms": 3843.5,
+    "api_ms": 1587,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7423,
+     "output": 85,
+     "total": 7510
+    },
+    "cost_usd": 0.0023386,
+    "ms": 3738.8,
+    "api_ms": 1406,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1361,
+     "cache_read": 6062,
+     "output": 78,
+     "total": 7503
+    },
+    "cost_usd": 0.0074404,
+    "ms": 3843.5,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1361,
+     "cache_read": 6062,
+     "output": 78,
+     "total": 7503
+    },
+    "cost_usd": 0.0074404,
+    "ms": 3843.5,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 1,
+   "cat": "mixed",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4518,
+     "cache_read": 13516,
+     "output": 555,
+     "total": 18593
+    },
+    "cost_usd": 0.0263332,
+    "ms": 7364.3,
+    "api_ms": 4693,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1891,
+     "cache_read": 14908,
+     "output": 642,
+     "total": 17445
+    },
+    "cost_usd": 0.016973600000000002,
+    "ms": 7555.3,
+    "api_ms": 4869,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4518,
+     "cache_read": 13516,
+     "output": 555,
+     "total": 18593
+    },
+    "cost_usd": 0.0263332,
+    "ms": 7364.3,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "낱말 bye",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 5.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 mixed 였다",
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 2,
+   "cat": "form",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7424,
+     "output": 143,
+     "total": 7569
+    },
+    "cost_usd": 0.0029188,
+    "ms": 4611.8,
+    "api_ms": 1977,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1362,
+     "cache_read": 6062,
+     "output": 185,
+     "total": 7611
+    },
+    "cost_usd": 0.0085144,
+    "ms": 4466.4,
+    "api_ms": 2063,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7424,
+     "output": 143,
+     "total": 7569
+    },
+    "cost_usd": 0.0029188,
+    "ms": 4611.8,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7424,
+     "output": 143,
+     "total": 7569
+    },
+    "cost_usd": 0.0029188,
+    "ms": 4611.8,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 3,
+   "cat": "knowledge",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 262,
+     "cache_read": 14858,
+     "output": 215,
+     "total": 15339
+    },
+    "cost_usd": 0.0061776,
+    "ms": 5113.9,
+    "api_ms": 2600,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1663,
+     "cache_read": 13491,
+     "output": 258,
+     "total": 15416
+    },
+    "cost_usd": 0.0119382,
+    "ms": 5519.3,
+    "api_ms": 3216,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 262,
+     "cache_read": 14858,
+     "output": 215,
+     "total": 15339
+    },
+    "cost_usd": 0.0061776,
+    "ms": 5113.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 262,
+     "cache_read": 14858,
+     "output": 215,
+     "total": 15339
+    },
+    "cost_usd": 0.0061776,
+    "ms": 5113.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 4,
+   "cat": "knowledge",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1726,
+     "cache_read": 13495,
+     "output": 364,
+     "total": 15589
+    },
+    "cost_usd": 0.013251000000000002,
+    "ms": 5965.8,
+    "api_ms": 3706,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 622,
+     "cache_read": 14866,
+     "output": 395,
+     "total": 15887
+    },
+    "cost_usd": 0.0094192,
+    "ms": 5959.0,
+    "api_ms": 3732,
+    "turns": 3,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1726,
+     "cache_read": 13495,
+     "output": 364,
+     "total": 15589
+    },
+    "cost_usd": 0.013251000000000002,
+    "ms": 5965.8,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1726,
+     "cache_read": 13495,
+     "output": 364,
+     "total": 15589
+    },
+    "cost_usd": 0.013251000000000002,
+    "ms": 5965.8,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 5,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 341,
+     "cache_read": 14878,
+     "output": 207,
+     "total": 15430
+    },
+    "cost_usd": 0.0064176,
+    "ms": 4847.0,
+    "api_ms": 2487,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1770,
+     "cache_read": 13501,
+     "output": 244,
+     "total": 15519
+    },
+    "cost_usd": 0.012228200000000002,
+    "ms": 5231.1,
+    "api_ms": 2644,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 341,
+     "cache_read": 14878,
+     "output": 207,
+     "total": 15430
+    },
+    "cost_usd": 0.0064176,
+    "ms": 4847.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 341,
+     "cache_read": 14878,
+     "output": 207,
+     "total": 15430
+    },
+    "cost_usd": 0.0064176,
+    "ms": 4847.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   }
+  },
+  {
+   "i": 6,
+   "cat": "form",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1377,
+     "cache_read": 6062,
+     "output": 170,
+     "total": 7611
+    },
+    "cost_usd": 0.0084244,
+    "ms": 4074.4,
+    "api_ms": 1882,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7439,
+     "output": 195,
+     "total": 7636
+    },
+    "cost_usd": 0.0034418,
+    "ms": 4462.6,
+    "api_ms": 2188,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP capability",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 12.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 form 였다",
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "낱말 capability",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 5.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 form 였다",
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 7,
+   "cat": "plan",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4531,
+     "cache_read": 13533,
+     "output": 1386,
+     "total": 19454
+    },
+    "cost_usd": 0.0346986,
+    "ms": 12216.2,
+    "api_ms": 9006,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3106,
+     "cache_read": 14942,
+     "output": 1296,
+     "total": 19348
+    },
+    "cost_usd": 0.0283804,
+    "ms": 11164.8,
+    "api_ms": 8190,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4531,
+     "cache_read": 13533,
+     "output": 1386,
+     "total": 19454
+    },
+    "cost_usd": 0.0346986,
+    "ms": 12216.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4531,
+     "cache_read": 13533,
+     "output": 1386,
+     "total": 19454
+    },
+    "cost_usd": 0.0346986,
+    "ms": 12216.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 8,
+   "cat": "plan",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3066,
+     "cache_read": 14838,
+     "output": 1246,
+     "total": 19154
+    },
+    "cost_usd": 0.0276996,
+    "ms": 11186.0,
+    "api_ms": 8190,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4424,
+     "cache_read": 13481,
+     "output": 1295,
+     "total": 19204
+    },
+    "cost_usd": 0.033350199999999997,
+    "ms": 10818.3,
+    "api_ms": 7949,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3066,
+     "cache_read": 14838,
+     "output": 1246,
+     "total": 19154
+    },
+    "cost_usd": 0.0276996,
+    "ms": 11186.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3066,
+     "cache_read": 14838,
+     "output": 1246,
+     "total": 19154
+    },
+    "cost_usd": 0.0276996,
+    "ms": 11186.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 9,
+   "cat": "smalltalk",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1365,
+     "cache_read": 6062,
+     "output": 243,
+     "total": 7672
+    },
+    "cost_usd": 0.0091064,
+    "ms": 3920.1,
+    "api_ms": 2768,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7427,
+     "output": 210,
+     "total": 7639
+    },
+    "cost_usd": 0.0035894000000000004,
+    "ms": 3768.8,
+    "api_ms": 2588,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP thanks",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 10.6,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1365,
+     "cache_read": 6062,
+     "output": 243,
+     "total": 7672
+    },
+    "cost_usd": 0.0091064,
+    "ms": 3920.1,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 10,
+   "cat": "plan",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3163,
+     "cache_read": 13518,
+     "output": 1173,
+     "total": 17858
+    },
+    "cost_usd": 0.027093600000000002,
+    "ms": 9307.4,
+    "api_ms": 7181,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1766,
+     "cache_read": 14912,
+     "output": 1176,
+     "total": 17858
+    },
+    "cost_usd": 0.0218144,
+    "ms": 9720.9,
+    "api_ms": 7270,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3163,
+     "cache_read": 13518,
+     "output": 1173,
+     "total": 17858
+    },
+    "cost_usd": 0.027093600000000002,
+    "ms": 9307.4,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3163,
+     "cache_read": 13518,
+     "output": 1173,
+     "total": 17858
+    },
+    "cost_usd": 0.027093600000000002,
+    "ms": 9307.4,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 11,
+   "cat": "out_of_scope",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7422,
+     "output": 237,
+     "total": 7661
+    },
+    "cost_usd": 0.0038583999999999997,
+    "ms": 4856.1,
+    "api_ms": 2594,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1360,
+     "cache_read": 6062,
+     "output": 227,
+     "total": 7651
+    },
+    "cost_usd": 0.008926400000000001,
+    "ms": 5132.2,
+    "api_ms": 2597,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7422,
+     "output": 237,
+     "total": 7661
+    },
+    "cost_usd": 0.0038583999999999997,
+    "ms": 4856.1,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7422,
+     "output": 237,
+     "total": 7661
+    },
+    "cost_usd": 0.0038583999999999997,
+    "ms": 4856.1,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 12,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1623,
+     "cache_read": 13486,
+     "output": 143,
+     "total": 15256
+    },
+    "cost_usd": 0.0106272,
+    "ms": 4669.7,
+    "api_ms": 2561,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "K": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.5,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.3,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 5.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   }
+  },
+  {
+   "i": 13,
+   "cat": "out_of_scope",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1380,
+     "cache_read": 6062,
+     "output": 14,
+     "total": 7458
+    },
+    "cost_usd": 0.0068763999999999995,
+    "ms": 3020.2,
+    "api_ms": 1216,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7442,
+     "output": 14,
+     "total": 7458
+    },
+    "cost_usd": 0.0016324,
+    "ms": 3081.3,
+    "api_ms": 1028,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1380,
+     "cache_read": 6062,
+     "output": 14,
+     "total": 7458
+    },
+    "cost_usd": 0.0068763999999999995,
+    "ms": 3020.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1380,
+     "cache_read": 6062,
+     "output": 14,
+     "total": 7458
+    },
+    "cost_usd": 0.0068763999999999995,
+    "ms": 3020.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 14,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1827,
+     "cache_read": 13505,
+     "output": 365,
+     "total": 15701
+    },
+    "cost_usd": 0.013666999999999999,
+    "ms": 5760.0,
+    "api_ms": 3407,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "K": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.8,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.3,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 5.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   }
+  },
+  {
+   "i": 15,
+   "cat": "mixed",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3309,
+     "cache_read": 14892,
+     "output": 1380,
+     "total": 19585
+    },
+    "cost_usd": 0.030022399999999998,
+    "ms": 11207.7,
+    "api_ms": 8748,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 6,
+     "cache_creation": 6134,
+     "cache_read": 22593,
+     "output": 2133,
+     "total": 30866
+    },
+    "cost_usd": 0.0503966,
+    "ms": 14913.3,
+    "api_ms": 12392,
+    "turns": 3,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP thanks",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 14.1,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 mixed 였다",
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "낱말 thanks",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 5.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 mixed 였다",
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 16,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1750,
+     "cache_read": 13501,
+     "output": 249,
+     "total": 15504
+    },
+    "cost_usd": 0.0121982,
+    "ms": 5433.2,
+    "api_ms": 2924,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 336,
+     "cache_read": 14878,
+     "output": 205,
+     "total": 15423
+    },
+    "cost_usd": 0.006377600000000001,
+    "ms": 4923.9,
+    "api_ms": 2380,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1750,
+     "cache_read": 13501,
+     "output": 249,
+     "total": 15504
+    },
+    "cost_usd": 0.0121982,
+    "ms": 5433.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1750,
+     "cache_read": 13501,
+     "output": 249,
+     "total": 15504
+    },
+    "cost_usd": 0.0121982,
+    "ms": 5433.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   }
+  },
+  {
+   "i": 17,
+   "cat": "form",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1360,
+     "cache_read": 6062,
+     "output": 98,
+     "total": 7522
+    },
+    "cost_usd": 0.007636400000000001,
+    "ms": 3865.9,
+    "api_ms": 1420,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7422,
+     "output": 80,
+     "total": 7504
+    },
+    "cost_usd": 0.0022884000000000003,
+    "ms": 3810.3,
+    "api_ms": 1298,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP help",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 17.5,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 form 였다",
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1360,
+     "cache_read": 6062,
+     "output": 98,
+     "total": 7522
+    },
+    "cost_usd": 0.007636400000000001,
+    "ms": 3865.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 18,
+   "cat": "form",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7430,
+     "output": 77,
+     "total": 7509
+    },
+    "cost_usd": 0.0022600000000000003,
+    "ms": 3636.9,
+    "api_ms": 1414,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1368,
+     "cache_read": 6062,
+     "output": 73,
+     "total": 7505
+    },
+    "cost_usd": 0.0074184,
+    "ms": 3684.5,
+    "api_ms": 1410,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7430,
+     "output": 77,
+     "total": 7509
+    },
+    "cost_usd": 0.0022600000000000003,
+    "ms": 3636.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7430,
+     "output": 77,
+     "total": 7509
+    },
+    "cost_usd": 0.0022600000000000003,
+    "ms": 3636.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 19,
+   "cat": "knowledge",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1361,
+     "cache_read": 6062,
+     "output": 164,
+     "total": 7589
+    },
+    "cost_usd": 0.0083004,
+    "ms": 4448.9,
+    "api_ms": 2082,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7423,
+     "output": 172,
+     "total": 7597
+    },
+    "cost_usd": 0.0032086000000000003,
+    "ms": 4666.7,
+    "api_ms": 2147,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP help",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 14.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 knowledge 였다",
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1361,
+     "cache_read": 6062,
+     "output": 164,
+     "total": 7589
+    },
+    "cost_usd": 0.0083004,
+    "ms": 4448.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 20,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1758,
+     "cache_read": 13504,
+     "output": 269,
+     "total": 15535
+    },
+    "cost_usd": 0.012430799999999999,
+    "ms": 5412.4,
+    "api_ms": 2946,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 392,
+     "cache_read": 14884,
+     "output": 261,
+     "total": 15541
+    },
+    "cost_usd": 0.0071628,
+    "ms": 5234.7,
+    "api_ms": 2924,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1758,
+     "cache_read": 13504,
+     "output": 269,
+     "total": 15535
+    },
+    "cost_usd": 0.012430799999999999,
+    "ms": 5412.4,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1758,
+     "cache_read": 13504,
+     "output": 269,
+     "total": 15535
+    },
+    "cost_usd": 0.012430799999999999,
+    "ms": 5412.4,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   }
+  },
+  {
+   "i": 21,
+   "cat": "smalltalk",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1372,
+     "cache_read": 6062,
+     "output": 378,
+     "total": 7814
+    },
+    "cost_usd": 0.010484400000000001,
+    "ms": 5208.9,
+    "api_ms": 3865,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7434,
+     "output": 555,
+     "total": 7991
+    },
+    "cost_usd": 0.0070408,
+    "ms": 7783.7,
+    "api_ms": 4931,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP help",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 14.1,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1372,
+     "cache_read": 6062,
+     "output": 378,
+     "total": 7814
+    },
+    "cost_usd": 0.010484400000000001,
+    "ms": 5208.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 22,
+   "cat": "mixed",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3193,
+     "cache_read": 14914,
+     "output": 1322,
+     "total": 19433
+    },
+    "cost_usd": 0.028982800000000003,
+    "ms": 11676.1,
+    "api_ms": 8506,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4575,
+     "cache_read": 13519,
+     "output": 1206,
+     "total": 19304
+    },
+    "cost_usd": 0.0330718,
+    "ms": 10126.9,
+    "api_ms": 7798,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3193,
+     "cache_read": 14914,
+     "output": 1322,
+     "total": 19433
+    },
+    "cost_usd": 0.028982800000000003,
+    "ms": 11676.1,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3193,
+     "cache_read": 14914,
+     "output": 1322,
+     "total": 19433
+    },
+    "cost_usd": 0.028982800000000003,
+    "ms": 11676.1,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 23,
+   "cat": "knowledge",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7435,
+     "output": 425,
+     "total": 7862
+    },
+    "cost_usd": 0.005741,
+    "ms": 6351.5,
+    "api_ms": 4142,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1373,
+     "cache_read": 6062,
+     "output": 355,
+     "total": 7792
+    },
+    "cost_usd": 0.0102584,
+    "ms": 6433.6,
+    "api_ms": 3446,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7435,
+     "output": 425,
+     "total": 7862
+    },
+    "cost_usd": 0.005741,
+    "ms": 6351.5,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7435,
+     "output": 425,
+     "total": 7862
+    },
+    "cost_usd": 0.005741,
+    "ms": 6351.5,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 24,
+   "cat": "mixed",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3350,
+     "cache_read": 13513,
+     "output": 1381,
+     "total": 18248
+    },
+    "cost_usd": 0.029920600000000002,
+    "ms": 10701.6,
+    "api_ms": 9288,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 2007,
+     "cache_read": 14902,
+     "output": 1386,
+     "total": 18299
+    },
+    "cost_usd": 0.0248764,
+    "ms": 11443.9,
+    "api_ms": 8978,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3350,
+     "cache_read": 13513,
+     "output": 1381,
+     "total": 18248
+    },
+    "cost_usd": 0.029920600000000002,
+    "ms": 10701.6,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3350,
+     "cache_read": 13513,
+     "output": 1381,
+     "total": 18248
+    },
+    "cost_usd": 0.029920600000000002,
+    "ms": 10701.6,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 25,
+   "cat": "plan",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4596,
+     "cache_read": 13491,
+     "output": 1407,
+     "total": 19498
+    },
+    "cost_usd": 0.0351602,
+    "ms": 11857.0,
+    "api_ms": 8868,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3194,
+     "cache_read": 14858,
+     "output": 1395,
+     "total": 19451
+    },
+    "cost_usd": 0.0297056,
+    "ms": 12175.1,
+    "api_ms": 8797,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4596,
+     "cache_read": 13491,
+     "output": 1407,
+     "total": 19498
+    },
+    "cost_usd": 0.0351602,
+    "ms": 11857.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4596,
+     "cache_read": 13491,
+     "output": 1407,
+     "total": 19498
+    },
+    "cost_usd": 0.0351602,
+    "ms": 11857.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 26,
+   "cat": "form",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1376,
+     "cache_read": 6062,
+     "output": 52,
+     "total": 7492
+    },
+    "cost_usd": 0.0072404,
+    "ms": 3524.9,
+    "api_ms": 1102,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7438,
+     "output": 53,
+     "total": 7493
+    },
+    "cost_usd": 0.0020216,
+    "ms": 3228.2,
+    "api_ms": 1130,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1376,
+     "cache_read": 6062,
+     "output": 52,
+     "total": 7492
+    },
+    "cost_usd": 0.0072404,
+    "ms": 3524.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1376,
+     "cache_read": 6062,
+     "output": 52,
+     "total": 7492
+    },
+    "cost_usd": 0.0072404,
+    "ms": 3524.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 27,
+   "cat": "mixed",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 5290,
+     "cache_read": 13498,
+     "output": 1357,
+     "total": 20149
+    },
+    "cost_usd": 0.0374376,
+    "ms": 11431.9,
+    "api_ms": 8634,
+    "turns": 3,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4536,
+     "cache_read": 13498,
+     "output": 1184,
+     "total": 19222
+    },
+    "cost_usd": 0.0326916,
+    "ms": 9914.4,
+    "api_ms": 7472,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP greet",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 13.7,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 mixed 였다",
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "낱말 greet",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 5.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 mixed 였다",
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 28,
+   "cat": "out_of_scope",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7427,
+     "output": 203,
+     "total": 7632
+    },
+    "cost_usd": 0.0035194000000000002,
+    "ms": 4663.8,
+    "api_ms": 2350,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1365,
+     "cache_read": 6062,
+     "output": 214,
+     "total": 7643
+    },
+    "cost_usd": 0.008816399999999999,
+    "ms": 4551.3,
+    "api_ms": 2441,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7427,
+     "output": 203,
+     "total": 7632
+    },
+    "cost_usd": 0.0035194000000000002,
+    "ms": 4663.8,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7427,
+     "output": 203,
+     "total": 7632
+    },
+    "cost_usd": 0.0035194000000000002,
+    "ms": 4663.8,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 29,
+   "cat": "plan",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3586,
+     "cache_read": 13518,
+     "output": 1174,
+     "total": 18282
+    },
+    "cost_usd": 0.0287956,
+    "ms": 10579.9,
+    "api_ms": 7659,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 2215,
+     "cache_read": 14912,
+     "output": 1237,
+     "total": 18368
+    },
+    "cost_usd": 0.0242204,
+    "ms": 10894.9,
+    "api_ms": 8331,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3586,
+     "cache_read": 13518,
+     "output": 1174,
+     "total": 18282
+    },
+    "cost_usd": 0.0287956,
+    "ms": 10579.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3586,
+     "cache_read": 13518,
+     "output": 1174,
+     "total": 18282
+    },
+    "cost_usd": 0.0287956,
+    "ms": 10579.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 30,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1714,
+     "cache_read": 13503,
+     "output": 163,
+     "total": 15384
+    },
+    "cost_usd": 0.0111946,
+    "ms": 4562.6,
+    "api_ms": 2310,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "K": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.7,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 5.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   }
+  },
+  {
+   "i": 31,
+   "cat": "mixed",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4459,
+     "cache_read": 13513,
+     "output": 1161,
+     "total": 19137
+    },
+    "cost_usd": 0.032156599999999994,
+    "ms": 10498.9,
+    "api_ms": 7199,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4454,
+     "cache_read": 13513,
+     "output": 1262,
+     "total": 19233
+    },
+    "cost_usd": 0.0331466,
+    "ms": 10911.0,
+    "api_ms": 7910,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP greet",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 13.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 mixed 였다",
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4459,
+     "cache_read": 13513,
+     "output": 1161,
+     "total": 19137
+    },
+    "cost_usd": 0.032156599999999994,
+    "ms": 10498.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 32,
+   "cat": "out_of_scope",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1369,
+     "cache_read": 6062,
+     "output": 265,
+     "total": 7698
+    },
+    "cost_usd": 0.0093424,
+    "ms": 4427.1,
+    "api_ms": 2312,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7431,
+     "output": 341,
+     "total": 7774
+    },
+    "cost_usd": 0.0049002,
+    "ms": 5081.1,
+    "api_ms": 2722,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1369,
+     "cache_read": 6062,
+     "output": 265,
+     "total": 7698
+    },
+    "cost_usd": 0.0093424,
+    "ms": 4427.1,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1369,
+     "cache_read": 6062,
+     "output": 265,
+     "total": 7698
+    },
+    "cost_usd": 0.0093424,
+    "ms": 4427.1,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 33,
+   "cat": "out_of_scope",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7424,
+     "output": 475,
+     "total": 7901
+    },
+    "cost_usd": 0.006238799999999999,
+    "ms": 6728.1,
+    "api_ms": 4591,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1362,
+     "cache_read": 6062,
+     "output": 570,
+     "total": 7996
+    },
+    "cost_usd": 0.0123644,
+    "ms": 6972.3,
+    "api_ms": 4937,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7424,
+     "output": 475,
+     "total": 7901
+    },
+    "cost_usd": 0.006238799999999999,
+    "ms": 6728.1,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7424,
+     "output": 475,
+     "total": 7901
+    },
+    "cost_usd": 0.006238799999999999,
+    "ms": 6728.1,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 34,
+   "cat": "smalltalk",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1366,
+     "cache_read": 6062,
+     "output": 95,
+     "total": 7525
+    },
+    "cost_usd": 0.007630400000000001,
+    "ms": 3731.2,
+    "api_ms": 1695,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7428,
+     "output": 63,
+     "total": 7493
+    },
+    "cost_usd": 0.0021196,
+    "ms": 4840.6,
+    "api_ms": 1514,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP bye",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 13.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1366,
+     "cache_read": 6062,
+     "output": 95,
+     "total": 7525
+    },
+    "cost_usd": 0.007630400000000001,
+    "ms": 3731.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 35,
+   "cat": "smalltalk",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7419,
+     "output": 122,
+     "total": 7543
+    },
+    "cost_usd": 0.0027078000000000002,
+    "ms": 2944.2,
+    "api_ms": 1668,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1357,
+     "cache_read": 6062,
+     "output": 105,
+     "total": 7526
+    },
+    "cost_usd": 0.0076944,
+    "ms": 3750.7,
+    "api_ms": 1522,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP greet",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 11.3,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7419,
+     "output": 122,
+     "total": 7543
+    },
+    "cost_usd": 0.0027078000000000002,
+    "ms": 2944.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 36,
+   "cat": "out_of_scope",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1366,
+     "cache_read": 6062,
+     "output": 223,
+     "total": 7653
+    },
+    "cost_usd": 0.0089104,
+    "ms": 6249.2,
+    "api_ms": 3391,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7428,
+     "output": 234,
+     "total": 7664
+    },
+    "cost_usd": 0.0038296000000000003,
+    "ms": 5961.1,
+    "api_ms": 3889,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1366,
+     "cache_read": 6062,
+     "output": 223,
+     "total": 7653
+    },
+    "cost_usd": 0.0089104,
+    "ms": 6249.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1366,
+     "cache_read": 6062,
+     "output": 223,
+     "total": 7653
+    },
+    "cost_usd": 0.0089104,
+    "ms": 6249.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 37,
+   "cat": "plan",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4679,
+     "cache_read": 13507,
+     "output": 1056,
+     "total": 19246
+    },
+    "cost_usd": 0.0319854,
+    "ms": 11226.4,
+    "api_ms": 8676,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 2056,
+     "cache_read": 14890,
+     "output": 726,
+     "total": 17676
+    },
+    "cost_usd": 0.01847,
+    "ms": 7758.0,
+    "api_ms": 5417,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4679,
+     "cache_read": 13507,
+     "output": 1056,
+     "total": 19246
+    },
+    "cost_usd": 0.0319854,
+    "ms": 11226.4,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4679,
+     "cache_read": 13507,
+     "output": 1056,
+     "total": 19246
+    },
+    "cost_usd": 0.0319854,
+    "ms": 11226.4,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 38,
+   "cat": "smalltalk",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7419,
+     "output": 175,
+     "total": 7596
+    },
+    "cost_usd": 0.0032378000000000003,
+    "ms": 3550.7,
+    "api_ms": 2106,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1357,
+     "cache_read": 6062,
+     "output": 192,
+     "total": 7613
+    },
+    "cost_usd": 0.0085644,
+    "ms": 4848.7,
+    "api_ms": 2481,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP about_self",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 12.1,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "낱말 about_self",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 5.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 39,
+   "cat": "plan",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4507,
+     "cache_read": 13520,
+     "output": 1294,
+     "total": 19325
+    },
+    "cost_usd": 0.03368,
+    "ms": 11012.4,
+    "api_ms": 7934,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3107,
+     "cache_read": 14916,
+     "output": 1321,
+     "total": 19348
+    },
+    "cost_usd": 0.0286292,
+    "ms": 11143.7,
+    "api_ms": 7732,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4507,
+     "cache_read": 13520,
+     "output": 1294,
+     "total": 19325
+    },
+    "cost_usd": 0.03368,
+    "ms": 11012.4,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4507,
+     "cache_read": 13520,
+     "output": 1294,
+     "total": 19325
+    },
+    "cost_usd": 0.03368,
+    "ms": 11012.4,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 40,
+   "cat": "form",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1365,
+     "cache_read": 6062,
+     "output": 299,
+     "total": 7728
+    },
+    "cost_usd": 0.009666399999999999,
+    "ms": 5552.3,
+    "api_ms": 3003,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7427,
+     "output": 309,
+     "total": 7738
+    },
+    "cost_usd": 0.0045794,
+    "ms": 5183.1,
+    "api_ms": 2886,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP about_self",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 11.4,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 form 였다",
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1365,
+     "cache_read": 6062,
+     "output": 299,
+     "total": 7728
+    },
+    "cost_usd": 0.009666399999999999,
+    "ms": 5552.3,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 41,
+   "cat": "smalltalk",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1356,
+     "cache_read": 6062,
+     "output": 128,
+     "total": 7548
+    },
+    "cost_usd": 0.007920400000000001,
+    "ms": 3844.0,
+    "api_ms": 1679,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7418,
+     "output": 119,
+     "total": 7539
+    },
+    "cost_usd": 0.0026776000000000005,
+    "ms": 3764.2,
+    "api_ms": 1628,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP greet",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 11.7,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "낱말 greet",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 5.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 42,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 2254,
+     "cache_read": 13512,
+     "output": 594,
+     "total": 16364
+    },
+    "cost_usd": 0.0176664,
+    "ms": 6339.9,
+    "api_ms": 5155,
+    "turns": 3,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "K": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 1.1,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.7,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 5.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   }
+  },
+  {
+   "i": 43,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 0,
+     "cache_read": 15216,
+     "output": 182,
+     "total": 15402
+    },
+    "cost_usd": 0.004871200000000001,
+    "ms": 4694.2,
+    "api_ms": 2348,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1716,
+     "cache_read": 13500,
+     "output": 183,
+     "total": 15403
+    },
+    "cost_usd": 0.011402,
+    "ms": 5008.1,
+    "api_ms": 2592,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 0,
+     "cache_read": 15216,
+     "output": 182,
+     "total": 15402
+    },
+    "cost_usd": 0.004871200000000001,
+    "ms": 4694.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 0,
+     "cache_read": 15216,
+     "output": 182,
+     "total": 15402
+    },
+    "cost_usd": 0.004871200000000001,
+    "ms": 4694.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   }
+  },
+  {
+   "i": 44,
+   "cat": "knowledge",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1371,
+     "cache_read": 6062,
+     "output": 537,
+     "total": 7972
+    },
+    "cost_usd": 0.0120704,
+    "ms": 7018.9,
+    "api_ms": 4254,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7433,
+     "output": 450,
+     "total": 7885
+    },
+    "cost_usd": 0.0059906,
+    "ms": 6455.7,
+    "api_ms": 4068,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1371,
+     "cache_read": 6062,
+     "output": 537,
+     "total": 7972
+    },
+    "cost_usd": 0.0120704,
+    "ms": 7018.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1371,
+     "cache_read": 6062,
+     "output": 537,
+     "total": 7972
+    },
+    "cost_usd": 0.0120704,
+    "ms": 7018.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 45,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1809,
+     "cache_read": 13502,
+     "output": 319,
+     "total": 15634
+    },
+    "cost_usd": 0.013134400000000001,
+    "ms": 6336.2,
+    "api_ms": 3610,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "K": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 1.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "시각이 틀렸다",
+    "clock_ok": false,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "시각이 틀렸다",
+    "clock_ok": false,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 5.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "시각이 틀렸다",
+    "clock_ok": false,
+    "error": null
+   }
+  },
+  {
+   "i": 46,
+   "cat": "smalltalk",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7435,
+     "output": 138,
+     "total": 7575
+    },
+    "cost_usd": 0.0028710000000000003,
+    "ms": 4518.2,
+    "api_ms": 2065,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1373,
+     "cache_read": 6062,
+     "output": 174,
+     "total": 7611
+    },
+    "cost_usd": 0.0084484,
+    "ms": 4203.4,
+    "api_ms": 2081,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP thanks",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 9.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "낱말 thanks",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 5.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 47,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1622,
+     "cache_read": 13486,
+     "output": 159,
+     "total": 15271
+    },
+    "cost_usd": 0.0107832,
+    "ms": 4488.8,
+    "api_ms": 2153,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "K": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.5,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.3,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 5.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   }
+  },
+  {
+   "i": 48,
+   "cat": "knowledge",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1364,
+     "cache_read": 6062,
+     "output": 201,
+     "total": 7629
+    },
+    "cost_usd": 0.0086824,
+    "ms": 4765.6,
+    "api_ms": 2473,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1364,
+     "cache_read": 6062,
+     "output": 164,
+     "total": 7592
+    },
+    "cost_usd": 0.008312400000000001,
+    "ms": 4720.5,
+    "api_ms": 2101,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1364,
+     "cache_read": 6062,
+     "output": 201,
+     "total": 7629
+    },
+    "cost_usd": 0.0086824,
+    "ms": 4765.6,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1364,
+     "cache_read": 6062,
+     "output": 201,
+     "total": 7629
+    },
+    "cost_usd": 0.0086824,
+    "ms": 4765.6,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 49,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1863,
+     "cache_read": 13506,
+     "output": 438,
+     "total": 15811
+    },
+    "cost_usd": 0.0145412,
+    "ms": 6706.2,
+    "api_ms": 4170,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "K": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.4,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.6,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 5.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   }
+  },
+  {
+   "i": 50,
+   "cat": "out_of_scope",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7425,
+     "output": 160,
+     "total": 7587
+    },
+    "cost_usd": 0.0030890000000000006,
+    "ms": 5143.2,
+    "api_ms": 2588,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1363,
+     "cache_read": 6062,
+     "output": 186,
+     "total": 7613
+    },
+    "cost_usd": 0.0085284,
+    "ms": 4956.0,
+    "api_ms": 2595,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7425,
+     "output": 160,
+     "total": 7587
+    },
+    "cost_usd": 0.0030890000000000006,
+    "ms": 5143.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7425,
+     "output": 160,
+     "total": 7587
+    },
+    "cost_usd": 0.0030890000000000006,
+    "ms": 5143.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 51,
+   "cat": "plan",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 6,
+     "cache_creation": 6176,
+     "cache_read": 22628,
+     "output": 2270,
+     "total": 31080
+    },
+    "cost_usd": 0.051941600000000004,
+    "ms": 16157.3,
+    "api_ms": 13700,
+    "turns": 3,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3410,
+     "cache_read": 14860,
+     "output": 1501,
+     "total": 19775
+    },
+    "cost_usd": 0.03163,
+    "ms": 12586.5,
+    "api_ms": 9979,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP capability",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 20.4,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 plan 였다",
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 6,
+     "cache_creation": 6176,
+     "cache_read": 22628,
+     "output": 2270,
+     "total": 31080
+    },
+    "cost_usd": 0.051941600000000004,
+    "ms": 16157.3,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 52,
+   "cat": "knowledge",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1368,
+     "cache_read": 6062,
+     "output": 284,
+     "total": 7716
+    },
+    "cost_usd": 0.0095284,
+    "ms": 5905.2,
+    "api_ms": 3189,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1368,
+     "cache_read": 6062,
+     "output": 248,
+     "total": 7680
+    },
+    "cost_usd": 0.0091684,
+    "ms": 5783.9,
+    "api_ms": 3116,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1368,
+     "cache_read": 6062,
+     "output": 284,
+     "total": 7716
+    },
+    "cost_usd": 0.0095284,
+    "ms": 5905.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1368,
+     "cache_read": 6062,
+     "output": 284,
+     "total": 7716
+    },
+    "cost_usd": 0.0095284,
+    "ms": 5905.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 53,
+   "cat": "out_of_scope",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1362,
+     "cache_read": 6062,
+     "output": 143,
+     "total": 7569
+    },
+    "cost_usd": 0.0080944,
+    "ms": 4259.6,
+    "api_ms": 2141,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7424,
+     "output": 119,
+     "total": 7545
+    },
+    "cost_usd": 0.0026788000000000003,
+    "ms": 4093.6,
+    "api_ms": 1830,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1362,
+     "cache_read": 6062,
+     "output": 143,
+     "total": 7569
+    },
+    "cost_usd": 0.0080944,
+    "ms": 4259.6,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1362,
+     "cache_read": 6062,
+     "output": 143,
+     "total": 7569
+    },
+    "cost_usd": 0.0080944,
+    "ms": 4259.6,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 54,
+   "cat": "knowledge",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7427,
+     "output": 359,
+     "total": 7788
+    },
+    "cost_usd": 0.0050793999999999995,
+    "ms": 6466.8,
+    "api_ms": 3809,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1365,
+     "cache_read": 6062,
+     "output": 337,
+     "total": 7766
+    },
+    "cost_usd": 0.0100464,
+    "ms": 5798.3,
+    "api_ms": 3515,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7427,
+     "output": 359,
+     "total": 7788
+    },
+    "cost_usd": 0.0050793999999999995,
+    "ms": 6466.8,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7427,
+     "output": 359,
+     "total": 7788
+    },
+    "cost_usd": 0.0050793999999999995,
+    "ms": 6466.8,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 55,
+   "cat": "form",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7436,
+     "output": 105,
+     "total": 7543
+    },
+    "cost_usd": 0.0025412000000000004,
+    "ms": 4115.4,
+    "api_ms": 1761,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1374,
+     "cache_read": 6062,
+     "output": 114,
+     "total": 7552
+    },
+    "cost_usd": 0.007852399999999999,
+    "ms": 4033.1,
+    "api_ms": 1626,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7436,
+     "output": 105,
+     "total": 7543
+    },
+    "cost_usd": 0.0025412000000000004,
+    "ms": 4115.4,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7436,
+     "output": 105,
+     "total": 7543
+    },
+    "cost_usd": 0.0025412000000000004,
+    "ms": 4115.4,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 56,
+   "cat": "mixed",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4302,
+     "cache_read": 13515,
+     "output": 941,
+     "total": 18762
+    },
+    "cost_usd": 0.029329,
+    "ms": 9248.0,
+    "api_ms": 6930,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 0,
+     "cache_read": 17817,
+     "output": 930,
+     "total": 18751
+    },
+    "cost_usd": 0.0128714,
+    "ms": 7727.8,
+    "api_ms": 6363,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP greet",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 12.5,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 mixed 였다",
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "낱말 greet",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 5.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 mixed 였다",
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 57,
+   "cat": "plan",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4458,
+     "cache_read": 13504,
+     "output": 1220,
+     "total": 19186
+    },
+    "cost_usd": 0.0327408,
+    "ms": 9827.8,
+    "api_ms": 7307,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4455,
+     "cache_read": 13504,
+     "output": 1184,
+     "total": 19147
+    },
+    "cost_usd": 0.0323688,
+    "ms": 9703.6,
+    "api_ms": 7163,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4458,
+     "cache_read": 13504,
+     "output": 1220,
+     "total": 19186
+    },
+    "cost_usd": 0.0327408,
+    "ms": 9827.8,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4458,
+     "cache_read": 13504,
+     "output": 1220,
+     "total": 19186
+    },
+    "cost_usd": 0.0327408,
+    "ms": 9827.8,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 58,
+   "cat": "plan",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4777,
+     "cache_read": 13500,
+     "output": 1617,
+     "total": 19898
+    },
+    "cost_usd": 0.037986000000000006,
+    "ms": 13174.9,
+    "api_ms": 10522,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3435,
+     "cache_read": 14876,
+     "output": 1755,
+     "total": 20070
+    },
+    "cost_usd": 0.034273200000000004,
+    "ms": 14054.4,
+    "api_ms": 11328,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4777,
+     "cache_read": 13500,
+     "output": 1617,
+     "total": 19898
+    },
+    "cost_usd": 0.037986000000000006,
+    "ms": 13174.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4777,
+     "cache_read": 13500,
+     "output": 1617,
+     "total": 19898
+    },
+    "cost_usd": 0.037986000000000006,
+    "ms": 13174.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 59,
+   "cat": "smalltalk",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7417,
+     "output": 273,
+     "total": 7692
+    },
+    "cost_usd": 0.0042174000000000005,
+    "ms": 5074.1,
+    "api_ms": 2858,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "K": {
+    "by": "claude",
+    "route": "시각 센서 못 정함 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1355,
+     "cache_read": 6062,
+     "output": 282,
+     "total": 7701
+    },
+    "cost_usd": 0.0094564,
+    "ms": 4974.2,
+    "api_ms": 2786,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP capability",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 12.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7417,
+     "output": 273,
+     "total": 7692
+    },
+    "cost_usd": 0.0042174000000000005,
+    "ms": 5074.1,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  }
+ ]
+}

@@ -130,6 +130,11 @@ _DATE_ISO = re.compile(r"(20\d\d)-(\d{1,2})-(\d{1,2})")
 _DATE_KO = re.compile(r"(?:(20\d\d)\s*년\s*)?(\d{1,2})\s*월\s*(\d{1,2})\s*일")
 _DATE_SL = re.compile(r"(?<![\d:/])(\d{1,2})/(\d{1,2})(?![\d/])")
 _REL = {"오늘": 0, "내일": 1, "모레": 2, "today": 0, "tomorrow": 1}
+# 읽지 못하는 날짜 꼴 -- 있으면 손대지 않는다. 날짜를 놓치면 오늘로 떨어져 **틀린 답을 확신 있게** 낸다(봉인 v2 #45, "Oct 31 2026")
+_DATE_UNREAD = re.compile(r"(?<![a-z])(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?(?![a-z])|"
+                          r"(?<![a-z])(mon|tue|tues|wed|thu|thur|thurs|fri|sat|sun)(day)?(?![a-z])|"
+                          r"(next|this|last)\s+week|다음\s*주|이번\s*주|지난\s*주|담주", re.I)
+_WEEKDAY_KO = re.compile(r"[월화수목금토일]요일")
 
 
 def _places(text: str, request: "dict | None") -> "list[tuple[int, str, str]]":
@@ -234,9 +239,13 @@ def clock_answer(text: str, request: "dict | None", now: dt.datetime) -> "dict |
     if not is_now and not t:
         return None
     today = now.date()
+    if _DATE_UNREAD.search(text):
+        return None
     day, written = _date(text, today)
     if written and day is None:
         return None
+    if _WEEKDAY_KO.search(text) and not written:
+        return None                                       # '금요일 오후 3시' -- 어느 금요일인지 안 읽는다
 
     def tz_of(name_tz, d):
         n, z = name_tz
@@ -358,7 +367,8 @@ class ClaudeCLI:
 
 # ---------------- 세 층을 잇는다 ----------------
 
-FRONT = os.environ.get("WORLDPLAN_FRONT", "off")    # off | clock | walp -- eval/PREREG_앞단비교*.md 의 결정을 따른다
+# off | clock | walp -- eval/PREREG_앞단비교*.md 의 결정을 따른다. v1: walp 는 H3 실패. v2: clock 은 H1 · H2 · H3 성립
+FRONT = os.environ.get("WORLDPLAN_FRONT", "clock")
 
 
 class Assistant:
