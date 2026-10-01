@@ -48,6 +48,10 @@ worldplan ask "서울 오후 3시는 뉴욕 몇 시야?"     # 터미널에서 �
 gemini                              # Gemini CLI 에서 바로 -- "다음 주 kim 이랑 sam 30분 잡아줘" (worldplan 도구가 붙어 있다)
 ```
 
+**Claude Code 에도 WALP 잡담층이 걸린다**(`~/.claude/settings.json` 의 UserPromptSubmit 훅, 다른 설정은 그대로):
+`claude` 에 "고마워요" 를 보내면 모형에 안 가고 WALP 가 답한다 — 진짜 `claude -p` 로 245 ms · 토큰 0(모형에 가면 1.8 초 · 2.5k 토큰).
+일이 담긴 말을 잡담으로 잘못 막았으면 **앞에 `//` 를 붙여 다시 보낸다.** 떼려면 `walp-front uninstall-hook`, 안 걸려면 `--no-claude-hook`.
+
 Gemini CLI 를 대화창으로 쓸 때는 처음 연 폴더를 믿을지 묻는다 — 믿어야 MCP 서버가 켜진다(안 믿으면 `Disabled`).
 
 ## 돌리기
