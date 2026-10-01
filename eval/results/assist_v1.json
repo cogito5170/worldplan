@@ -1,0 +1,3640 @@
+{
+ "summary": {
+  "n": 60,
+  "C": {
+   "tokens_sum": 784882,
+   "tokens_mean": 13081.366666666667,
+   "cost_usd": 0.9558,
+   "ms_mean": 6960.280000000002,
+   "ms_median": 5797.0,
+   "claude_calls": 60,
+   "front_errors": 0,
+   "claude_errors": 0,
+   "front_error_rate": 0.0,
+   "front_error_wilson95": 0.043154146670913995
+  },
+  "W": {
+   "tokens_sum": 409713,
+   "tokens_mean": 6828.55,
+   "cost_usd": 0.454,
+   "ms_mean": 3738.004999999999,
+   "ms_median": 3582.6,
+   "claude_calls": 33,
+   "front_errors": 11,
+   "claude_errors": 0,
+   "front_error_rate": 0.18333333333333332,
+   "front_error_wilson95": 0.2785333461353818
+  },
+  "R": {
+   "tokens_sum": 441752,
+   "tokens_mean": 7362.533333333334,
+   "cost_usd": 0.5598,
+   "ms_mean": 4222.051666666666,
+   "ms_median": 3979.2,
+   "claude_calls": 36,
+   "front_errors": 8,
+   "claude_errors": 0,
+   "front_error_rate": 0.13333333333333333,
+   "front_error_wilson95": 0.22152415577759124
+  },
+  "H1": {
+   "mean_diff_tokens": -6252.816666666667,
+   "upper95": -4620.55,
+   "holds": true
+  },
+  "H2": {
+   "mean_diff_ms": -3222.275,
+   "upper95": -2319.1333333333337,
+   "holds": true
+  },
+  "H3": {
+   "rate": 0.18333333333333332,
+   "holds": false
+  },
+  "decision_front_on": false,
+  "null_check_escalated": {
+   "n": 33,
+   "mean_diff_tokens": 60.81818181818182,
+   "mean_diff_ms": -23.43636363636382
+  },
+  "by_category": {
+   "knowledge": {
+    "n": 7,
+    "C_tok": 78677,
+    "W_tok": 78575,
+    "C_ms": 43705.799999999996,
+    "W_ms": 43206.7,
+    "W_front": 0,
+    "W_front_err": 0,
+    "R_front": 0,
+    "R_front_err": 0,
+    "C_clock_ok": 0,
+    "W_clock_ok": 0
+   },
+   "clock": {
+    "n": 13,
+    "C_tok": 194607,
+    "W_tok": 30806,
+    "C_ms": 75454.1,
+    "W_ms": 10472.499999999998,
+    "W_front": 11,
+    "W_front_err": 1,
+    "R_front": 11,
+    "R_front_err": 1,
+    "C_clock_ok": 9,
+    "W_clock_ok": 12
+   },
+   "mixed": {
+    "n": 7,
+    "C_tok": 133061,
+    "W_tok": 38231,
+    "C_ms": 72797.8,
+    "W_ms": 19486.8,
+    "W_front": 5,
+    "W_front_err": 5,
+    "R_front": 6,
+    "R_front_err": 6,
+    "C_clock_ok": 0,
+    "W_clock_ok": 0
+   },
+   "out_of_scope": {
+    "n": 7,
+    "C_tok": 52978,
+    "W_tok": 37839,
+    "C_ms": 30958.3,
+    "W_ms": 22603.500000000004,
+    "W_front": 2,
+    "W_front_err": 2,
+    "R_front": 0,
+    "R_front_err": 0,
+    "C_clock_ok": 0,
+    "W_clock_ok": 0
+   },
+   "smalltalk": {
+    "n": 7,
+    "C_tok": 53213,
+    "W_tok": 7476,
+    "C_ms": 30055.400000000005,
+    "W_ms": 3762.2999999999997,
+    "W_front": 6,
+    "W_front_err": 0,
+    "R_front": 6,
+    "R_front_err": 0,
+    "C_clock_ok": 0,
+    "W_clock_ok": 0
+   },
+   "form": {
+    "n": 8,
+    "C_tok": 60449,
+    "W_tok": 60243,
+    "C_ms": 33745.700000000004,
+    "W_ms": 32572.399999999998,
+    "W_front": 0,
+    "W_front_err": 0,
+    "R_front": 0,
+    "R_front_err": 0,
+    "C_clock_ok": 0,
+    "W_clock_ok": 0
+   },
+   "plan": {
+    "n": 11,
+    "C_tok": 211897,
+    "W_tok": 156543,
+    "C_ms": 130899.69999999998,
+    "W_ms": 92176.09999999999,
+    "W_front": 3,
+    "W_front_err": 3,
+    "R_front": 1,
+    "R_front_err": 1,
+    "C_clock_ok": 0,
+    "W_clock_ok": 0
+   }
+  },
+  "model": [
+   "claude-sonnet-5-5"
+  ],
+  "sealed_sha256": "da1fa278372d24cee29b0a560b4f1ed0217f4aa9537a6bb3eb8854fbf3f51d63"
+ },
+ "rows": [
+  {
+   "i": 0,
+   "cat": "knowledge",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1350,
+     "cache_read": 6062,
+     "output": 135,
+     "total": 7549
+    },
+    "cost_usd": 0.0079664,
+    "ms": 3979.2,
+    "api_ms": 1802,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7412,
+     "output": 142,
+     "total": 7556
+    },
+    "cost_usd": 0.0029064,
+    "ms": 4063.1,
+    "api_ms": 1923,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1350,
+     "cache_read": 6062,
+     "output": 135,
+     "total": 7549
+    },
+    "cost_usd": 0.0079664,
+    "ms": 3979.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 1,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1736,
+     "cache_read": 13485,
+     "output": 216,
+     "total": 15441
+    },
+    "cost_usd": 0.011809,
+    "ms": 4948.1,
+    "api_ms": 2667,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 4.6,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 4.6,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 2,
+   "cat": "knowledge",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7408,
+     "output": 423,
+     "total": 7833
+    },
+    "cost_usd": 0.0057155999999999995,
+    "ms": 7216.6,
+    "api_ms": 4318,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1346,
+     "cache_read": 6062,
+     "output": 443,
+     "total": 7853
+    },
+    "cost_usd": 0.0110304,
+    "ms": 7112.9,
+    "api_ms": 4418,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7408,
+     "output": 423,
+     "total": 7833
+    },
+    "cost_usd": 0.0057155999999999995,
+    "ms": 7216.6,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 3,
+   "cat": "mixed",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3065,
+     "cache_read": 14868,
+     "output": 1391,
+     "total": 19328
+    },
+    "cost_usd": 0.0291516,
+    "ms": 11674.2,
+    "api_ms": 8834,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4439,
+     "cache_read": 13496,
+     "output": 1282,
+     "total": 19221
+    },
+    "cost_usd": 0.0332832,
+    "ms": 11176.1,
+    "api_ms": 8273,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "낱말 greet",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 5.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 mixed 였다",
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 4,
+   "cat": "out_of_scope",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1342,
+     "cache_read": 6062,
+     "output": 120,
+     "total": 7526
+    },
+    "cost_usd": 0.0077844,
+    "ms": 4271.9,
+    "api_ms": 1934,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP greet",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 12.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 out_of_scope 였다",
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1342,
+     "cache_read": 6062,
+     "output": 120,
+     "total": 7526
+    },
+    "cost_usd": 0.0077844,
+    "ms": 4271.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 5,
+   "cat": "smalltalk",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1362,
+     "cache_read": 6062,
+     "output": 495,
+     "total": 7921
+    },
+    "cost_usd": 0.011614399999999999,
+    "ms": 5760.6,
+    "api_ms": 4477,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP help",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 12.6,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1362,
+     "cache_read": 6062,
+     "output": 495,
+     "total": 7921
+    },
+    "cost_usd": 0.011614399999999999,
+    "ms": 5760.6,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 6,
+   "cat": "knowledge",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1360,
+     "cache_read": 6062,
+     "output": 315,
+     "total": 7739
+    },
+    "cost_usd": 0.0098064,
+    "ms": 5508.0,
+    "api_ms": 3177,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7422,
+     "output": 291,
+     "total": 7715
+    },
+    "cost_usd": 0.0043984,
+    "ms": 5406.5,
+    "api_ms": 3136,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1360,
+     "cache_read": 6062,
+     "output": 315,
+     "total": 7739
+    },
+    "cost_usd": 0.0098064,
+    "ms": 5508.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 7,
+   "cat": "form",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1357,
+     "cache_read": 6062,
+     "output": 75,
+     "total": 7496
+    },
+    "cost_usd": 0.0073944,
+    "ms": 3748.1,
+    "api_ms": 1356,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7419,
+     "output": 71,
+     "total": 7492
+    },
+    "cost_usd": 0.0021978,
+    "ms": 3636.4,
+    "api_ms": 1374,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1357,
+     "cache_read": 6062,
+     "output": 75,
+     "total": 7496
+    },
+    "cost_usd": 0.0073944,
+    "ms": 3748.1,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 8,
+   "cat": "form",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7409,
+     "output": 76,
+     "total": 7487
+    },
+    "cost_usd": 0.0022458,
+    "ms": 3853.2,
+    "api_ms": 1422,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1347,
+     "cache_read": 6062,
+     "output": 74,
+     "total": 7485
+    },
+    "cost_usd": 0.007344400000000001,
+    "ms": 3518.9,
+    "api_ms": 1342,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7409,
+     "output": 76,
+     "total": 7487
+    },
+    "cost_usd": 0.0022458,
+    "ms": 3853.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 9,
+   "cat": "form",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1339,
+     "cache_read": 6062,
+     "output": 272,
+     "total": 7675
+    },
+    "cost_usd": 0.0092924,
+    "ms": 4843.7,
+    "api_ms": 2488,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7401,
+     "output": 123,
+     "total": 7526
+    },
+    "cost_usd": 0.0027142000000000004,
+    "ms": 4114.9,
+    "api_ms": 1648,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1339,
+     "cache_read": 6062,
+     "output": 272,
+     "total": 7675
+    },
+    "cost_usd": 0.0092924,
+    "ms": 4843.7,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 10,
+   "cat": "knowledge",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 2277,
+     "cache_read": 13469,
+     "output": 763,
+     "total": 16513
+    },
+    "cost_usd": 0.0194398,
+    "ms": 8687.2,
+    "api_ms": 6338,
+    "turns": 3,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 844,
+     "cache_read": 14814,
+     "output": 575,
+     "total": 16237
+    },
+    "cost_usd": 0.012096800000000001,
+    "ms": 8046.2,
+    "api_ms": 5416,
+    "turns": 3,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 2277,
+     "cache_read": 13469,
+     "output": 763,
+     "total": 16513
+    },
+    "cost_usd": 0.0194398,
+    "ms": 8687.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 11,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1697,
+     "cache_read": 13487,
+     "output": 220,
+     "total": 15408
+    },
+    "cost_usd": 0.011693400000000001,
+    "ms": 5418.5,
+    "api_ms": 2791,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.7,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "시각이 틀렸다",
+    "clock_ok": false,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.7,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "시각이 틀렸다",
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 12,
+   "cat": "plan",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4411,
+     "cache_read": 13469,
+     "output": 1091,
+     "total": 18975
+    },
+    "cost_usd": 0.0312558,
+    "ms": 9473.8,
+    "api_ms": 6952,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3068,
+     "cache_read": 14814,
+     "output": 1205,
+     "total": 19091
+    },
+    "cost_usd": 0.0272928,
+    "ms": 10570.6,
+    "api_ms": 7792,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4411,
+     "cache_read": 13469,
+     "output": 1091,
+     "total": 18975
+    },
+    "cost_usd": 0.0312558,
+    "ms": 9473.8,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 13,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1697,
+     "cache_read": 13481,
+     "output": 165,
+     "total": 15347
+    },
+    "cost_usd": 0.0111422,
+    "ms": 4476.2,
+    "api_ms": 2399,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.7,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.7,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 14,
+   "cat": "smalltalk",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1339,
+     "cache_read": 6062,
+     "output": 56,
+     "total": 7459
+    },
+    "cost_usd": 0.0071324,
+    "ms": 3452.8,
+    "api_ms": 1356,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7401,
+     "output": 73,
+     "total": 7476
+    },
+    "cost_usd": 0.0022142,
+    "ms": 3699.1,
+    "api_ms": 1572,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "낱말 thanks",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 5.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 15,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1693,
+     "cache_read": 13482,
+     "output": 178,
+     "total": 15357
+    },
+    "cost_usd": 0.011256400000000001,
+    "ms": 4782.9,
+    "api_ms": 2527,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.7,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.7,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 16,
+   "cat": "smalltalk",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1352,
+     "cache_read": 6062,
+     "output": 318,
+     "total": 7734
+    },
+    "cost_usd": 0.0098044,
+    "ms": 4429.4,
+    "api_ms": 3078,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP capability",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 10.5,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "낱말 capability",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 10.5,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 17,
+   "cat": "out_of_scope",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1349,
+     "cache_read": 6062,
+     "output": 150,
+     "total": 7563
+    },
+    "cost_usd": 0.008112399999999999,
+    "ms": 4586.8,
+    "api_ms": 2410,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7411,
+     "output": 129,
+     "total": 7542
+    },
+    "cost_usd": 0.0027762000000000004,
+    "ms": 4703.8,
+    "api_ms": 2296,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1349,
+     "cache_read": 6062,
+     "output": 150,
+     "total": 7563
+    },
+    "cost_usd": 0.008112399999999999,
+    "ms": 4586.8,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 18,
+   "cat": "out_of_scope",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7411,
+     "output": 287,
+     "total": 7700
+    },
+    "cost_usd": 0.0043562,
+    "ms": 4814.6,
+    "api_ms": 2427,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1349,
+     "cache_read": 6062,
+     "output": 279,
+     "total": 7692
+    },
+    "cost_usd": 0.0094024,
+    "ms": 5052.5,
+    "api_ms": 2806,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7411,
+     "output": 287,
+     "total": 7700
+    },
+    "cost_usd": 0.0043562,
+    "ms": 4814.6,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 19,
+   "cat": "mixed",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4792,
+     "cache_read": 13489,
+     "output": 1564,
+     "total": 19849
+    },
+    "cost_usd": 0.0375138,
+    "ms": 12878.2,
+    "api_ms": 9986,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP thanks",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 12.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 mixed 였다",
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "낱말 thanks",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 12.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 mixed 였다",
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 20,
+   "cat": "smalltalk",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1351,
+     "cache_read": 6062,
+     "output": 36,
+     "total": 7451
+    },
+    "cost_usd": 0.0069803999999999995,
+    "ms": 3499.8,
+    "api_ms": 1377,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP bye",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 9.4,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "낱말 bye",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 9.4,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 21,
+   "cat": "plan",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4603,
+     "cache_read": 13475,
+     "output": 1418,
+     "total": 19500
+    },
+    "cost_usd": 0.03529500000000001,
+    "ms": 11805.1,
+    "api_ms": 9249,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3190,
+     "cache_read": 14826,
+     "output": 1382,
+     "total": 19402
+    },
+    "cost_usd": 0.0295532,
+    "ms": 11972.5,
+    "api_ms": 9028,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4603,
+     "cache_read": 13475,
+     "output": 1418,
+     "total": 19500
+    },
+    "cost_usd": 0.03529500000000001,
+    "ms": 11805.1,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 22,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1756,
+     "cache_read": 13477,
+     "output": 282,
+     "total": 15519
+    },
+    "cost_usd": 0.0125474,
+    "ms": 5483.2,
+    "api_ms": 3227,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 23,
+   "cat": "mixed",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 0,
+     "cache_read": 18156,
+     "output": 862,
+     "total": 19022
+    },
+    "cost_usd": 0.0122592,
+    "ms": 8472.2,
+    "api_ms": 5875,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4664,
+     "cache_read": 13492,
+     "output": 850,
+     "total": 19010
+    },
+    "cost_usd": 0.029862399999999997,
+    "ms": 8242.0,
+    "api_ms": 5789,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "낱말 bye",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 5.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 mixed 였다",
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 24,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1890,
+     "cache_read": 13465,
+     "output": 527,
+     "total": 15886
+    },
+    "cost_usd": 0.015531,
+    "ms": 7068.7,
+    "api_ms": 5024,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": false,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.5,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.5,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 25,
+   "cat": "knowledge",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1657,
+     "cache_read": 13471,
+     "output": 331,
+     "total": 15463
+    },
+    "cost_usd": 0.0126402,
+    "ms": 6150.1,
+    "api_ms": 3889,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 320,
+     "cache_read": 14818,
+     "output": 369,
+     "total": 15511
+    },
+    "cost_usd": 0.0079416,
+    "ms": 6156.9,
+    "api_ms": 3927,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1657,
+     "cache_read": 13471,
+     "output": 331,
+     "total": 15463
+    },
+    "cost_usd": 0.0126402,
+    "ms": 6150.1,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 26,
+   "cat": "out_of_scope",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1357,
+     "cache_read": 6062,
+     "output": 12,
+     "total": 7433
+    },
+    "cost_usd": 0.006764399999999999,
+    "ms": 3114.2,
+    "api_ms": 1183,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7419,
+     "output": 13,
+     "total": 7434
+    },
+    "cost_usd": 0.0016178000000000002,
+    "ms": 3339.7,
+    "api_ms": 1244,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1357,
+     "cache_read": 6062,
+     "output": 12,
+     "total": 7433
+    },
+    "cost_usd": 0.006764399999999999,
+    "ms": 3114.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 27,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 374,
+     "cache_read": 14826,
+     "output": 200,
+     "total": 15404
+    },
+    "cost_usd": 0.0064692000000000005,
+    "ms": 5021.5,
+    "api_ms": 2715,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1725,
+     "cache_read": 13475,
+     "output": 200,
+     "total": 15404
+    },
+    "cost_usd": 0.011603,
+    "ms": 5100.9,
+    "api_ms": 2707,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 374,
+     "cache_read": 14826,
+     "output": 200,
+     "total": 15404
+    },
+    "cost_usd": 0.0064692000000000005,
+    "ms": 5021.5,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 28,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1884,
+     "cache_read": 13470,
+     "output": 541,
+     "total": 15899
+    },
+    "cost_usd": 0.015648,
+    "ms": 8176.5,
+    "api_ms": 5967,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": false,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.8,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.8,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 29,
+   "cat": "knowledge",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1960,
+     "cache_read": 13481,
+     "output": 409,
+     "total": 15854
+    },
+    "cost_usd": 0.0146342,
+    "ms": 6293.1,
+    "api_ms": 4054,
+    "turns": 3,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 698,
+     "cache_read": 14838,
+     "output": 513,
+     "total": 16053
+    },
+    "cost_usd": 0.0108976,
+    "ms": 6894.5,
+    "api_ms": 4672,
+    "turns": 3,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1960,
+     "cache_read": 13481,
+     "output": 409,
+     "total": 15854
+    },
+    "cost_usd": 0.0146342,
+    "ms": 6293.1,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 30,
+   "cat": "smalltalk",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1336,
+     "cache_read": 6062,
+     "output": 108,
+     "total": 7508
+    },
+    "cost_usd": 0.0076404,
+    "ms": 3835.7,
+    "api_ms": 1535,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP greet",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 9.6,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "낱말 greet",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 9.6,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 31,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1845,
+     "cache_read": 13481,
+     "output": 388,
+     "total": 15718
+    },
+    "cost_usd": 0.0139642,
+    "ms": 6068.3,
+    "api_ms": 3745,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 2.4,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 2.4,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 32,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1743,
+     "cache_read": 13493,
+     "output": 214,
+     "total": 15454
+    },
+    "cost_usd": 0.011818600000000002,
+    "ms": 5139.3,
+    "api_ms": 2735,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 340,
+     "cache_read": 14862,
+     "output": 196,
+     "total": 15402
+    },
+    "cost_usd": 0.006300400000000001,
+    "ms": 5358.4,
+    "api_ms": 2580,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1743,
+     "cache_read": 13493,
+     "output": 214,
+     "total": 15454
+    },
+    "cost_usd": 0.011818600000000002,
+    "ms": 5139.3,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 33,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1770,
+     "cache_read": 13477,
+     "output": 295,
+     "total": 15546
+    },
+    "cost_usd": 0.0127334,
+    "ms": 5918.6,
+    "api_ms": 3408,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.8,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.8,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 34,
+   "cat": "plan",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3394,
+     "cache_read": 13472,
+     "output": 635,
+     "total": 17505
+    },
+    "cost_usd": 0.0226284,
+    "ms": 7485.2,
+    "api_ms": 4910,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP capability",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 10.5,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 plan 였다",
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3394,
+     "cache_read": 13472,
+     "output": 635,
+     "total": 17505
+    },
+    "cost_usd": 0.0226284,
+    "ms": 7485.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 35,
+   "cat": "plan",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4593,
+     "cache_read": 13494,
+     "output": 2515,
+     "total": 20606
+    },
+    "cost_usd": 0.0462288,
+    "ms": 19469.4,
+    "api_ms": 18202,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP about_self",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 10.6,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 plan 였다",
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4593,
+     "cache_read": 13494,
+     "output": 2515,
+     "total": 20606
+    },
+    "cost_usd": 0.0462288,
+    "ms": 19469.4,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 36,
+   "cat": "mixed",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4448,
+     "cache_read": 13495,
+     "output": 1168,
+     "total": 19115
+    },
+    "cost_usd": 0.032179,
+    "ms": 9661.7,
+    "api_ms": 7226,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP thanks",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 18.3,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 mixed 였다",
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "낱말 thanks",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 18.3,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 mixed 였다",
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 37,
+   "cat": "form",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1352,
+     "cache_read": 6062,
+     "output": 360,
+     "total": 7776
+    },
+    "cost_usd": 0.0102244,
+    "ms": 5797.0,
+    "api_ms": 3433,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7414,
+     "output": 380,
+     "total": 7796
+    },
+    "cost_usd": 0.0052868,
+    "ms": 5975.9,
+    "api_ms": 3600,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1352,
+     "cache_read": 6062,
+     "output": 360,
+     "total": 7776
+    },
+    "cost_usd": 0.0102244,
+    "ms": 5797.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 38,
+   "cat": "plan",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 2097,
+     "cache_read": 14844,
+     "output": 1458,
+     "total": 18403
+    },
+    "cost_usd": 0.025944799999999997,
+    "ms": 12319.2,
+    "api_ms": 9725,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4591,
+     "cache_read": 13484,
+     "output": 1413,
+     "total": 19492
+    },
+    "cost_usd": 0.0351988,
+    "ms": 11538.0,
+    "api_ms": 9070,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 2097,
+     "cache_read": 14844,
+     "output": 1458,
+     "total": 18403
+    },
+    "cost_usd": 0.025944799999999997,
+    "ms": 12319.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 39,
+   "cat": "form",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1358,
+     "cache_read": 6062,
+     "output": 52,
+     "total": 7474
+    },
+    "cost_usd": 0.0071684,
+    "ms": 3704.4,
+    "api_ms": 1442,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7420,
+     "output": 52,
+     "total": 7474
+    },
+    "cost_usd": 0.0020080000000000002,
+    "ms": 3514.0,
+    "api_ms": 1203,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1358,
+     "cache_read": 6062,
+     "output": 52,
+     "total": 7474
+    },
+    "cost_usd": 0.0071684,
+    "ms": 3704.4,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 40,
+   "cat": "knowledge",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1348,
+     "cache_read": 6062,
+     "output": 314,
+     "total": 7726
+    },
+    "cost_usd": 0.0097484,
+    "ms": 5871.6,
+    "api_ms": 3250,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7410,
+     "output": 238,
+     "total": 7650
+    },
+    "cost_usd": 0.0038660000000000005,
+    "ms": 5526.6,
+    "api_ms": 2902,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1348,
+     "cache_read": 6062,
+     "output": 314,
+     "total": 7726
+    },
+    "cost_usd": 0.0097484,
+    "ms": 5871.6,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 41,
+   "cat": "plan",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4464,
+     "cache_read": 13478,
+     "output": 1264,
+     "total": 19210
+    },
+    "cost_usd": 0.033199599999999996,
+    "ms": 10802.5,
+    "api_ms": 8014,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3152,
+     "cache_read": 14832,
+     "output": 1363,
+     "total": 19351
+    },
+    "cost_usd": 0.0292124,
+    "ms": 11709.3,
+    "api_ms": 8897,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4464,
+     "cache_read": 13478,
+     "output": 1264,
+     "total": 19210
+    },
+    "cost_usd": 0.033199599999999996,
+    "ms": 10802.5,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 42,
+   "cat": "smalltalk",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1352,
+     "cache_read": 6062,
+     "output": 119,
+     "total": 7535
+    },
+    "cost_usd": 0.007814399999999999,
+    "ms": 4224.9,
+    "api_ms": 1936,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP thanks",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 12.1,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "낱말 thanks",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 12.1,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 43,
+   "cat": "plan",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3065,
+     "cache_read": 14810,
+     "output": 1197,
+     "total": 19076
+    },
+    "cost_usd": 0.027200000000000002,
+    "ms": 10665.4,
+    "api_ms": 7488,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4400,
+     "cache_read": 13467,
+     "output": 1316,
+     "total": 19187
+    },
+    "cost_usd": 0.0334614,
+    "ms": 10739.5,
+    "api_ms": 7904,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3065,
+     "cache_read": 14810,
+     "output": 1197,
+     "total": 19076
+    },
+    "cost_usd": 0.027200000000000002,
+    "ms": 10665.4,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 44,
+   "cat": "mixed",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3994,
+     "cache_read": 13484,
+     "output": 1187,
+     "total": 18669
+    },
+    "cost_usd": 0.030550800000000003,
+    "ms": 10079.4,
+    "api_ms": 7900,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP greet",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 11.7,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 mixed 였다",
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3994,
+     "cache_read": 13484,
+     "output": 1187,
+     "total": 18669
+    },
+    "cost_usd": 0.030550800000000003,
+    "ms": 10079.4,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 45,
+   "cat": "smalltalk",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1347,
+     "cache_read": 6062,
+     "output": 194,
+     "total": 7605
+    },
+    "cost_usd": 0.0085444,
+    "ms": 4852.2,
+    "api_ms": 2552,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP about_self",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 9.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "낱말 about_self",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 9.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 46,
+   "cat": "plan",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4733,
+     "cache_read": 13481,
+     "output": 1479,
+     "total": 19697
+    },
+    "cost_usd": 0.036426200000000006,
+    "ms": 12132.9,
+    "api_ms": 9563,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP capability",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 9.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 plan 였다",
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "낱말 capability",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 9.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 plan 였다",
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 47,
+   "cat": "plan",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4767,
+     "cache_read": 13485,
+     "output": 955,
+     "total": 19211
+    },
+    "cost_usd": 0.031323000000000004,
+    "ms": 9274.6,
+    "api_ms": 6546,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4510,
+     "cache_read": 14846,
+     "output": 885,
+     "total": 20245
+    },
+    "cost_usd": 0.029867199999999997,
+    "ms": 8864.5,
+    "api_ms": 6377,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4767,
+     "cache_read": 13485,
+     "output": 955,
+     "total": 19211
+    },
+    "cost_usd": 0.031323000000000004,
+    "ms": 9274.6,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 48,
+   "cat": "out_of_scope",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1344,
+     "cache_read": 6062,
+     "output": 220,
+     "total": 7628
+    },
+    "cost_usd": 0.008792399999999999,
+    "ms": 4855.3,
+    "api_ms": 2511,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP capability",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 9.9,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 out_of_scope 였다",
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1344,
+     "cache_read": 6062,
+     "output": 220,
+     "total": 7628
+    },
+    "cost_usd": 0.008792399999999999,
+    "ms": 4855.3,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 49,
+   "cat": "plan",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3608,
+     "cache_read": 14830,
+     "output": 1749,
+     "total": 20191
+    },
+    "cost_usd": 0.034895999999999996,
+    "ms": 15387.4,
+    "api_ms": 12274,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4975,
+     "cache_read": 13477,
+     "output": 1749,
+     "total": 20205
+    },
+    "cost_usd": 0.0400934,
+    "ms": 14547.5,
+    "api_ms": 11892,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3608,
+     "cache_read": 14830,
+     "output": 1749,
+     "total": 20191
+    },
+    "cost_usd": 0.034895999999999996,
+    "ms": 15387.4,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 50,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 1895,
+     "cache_read": 13466,
+     "output": 497,
+     "total": 15862
+    },
+    "cost_usd": 0.0152512,
+    "ms": 7063.1,
+    "api_ms": 5054,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": false,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.5,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.5,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 51,
+   "cat": "form",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1347,
+     "cache_read": 6062,
+     "output": 106,
+     "total": 7517
+    },
+    "cost_usd": 0.0076644,
+    "ms": 3923.3,
+    "api_ms": 1603,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7409,
+     "output": 107,
+     "total": 7518
+    },
+    "cost_usd": 0.0025558000000000004,
+    "ms": 4211.8,
+    "api_ms": 1563,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1347,
+     "cache_read": 6062,
+     "output": 106,
+     "total": 7517
+    },
+    "cost_usd": 0.0076644,
+    "ms": 3923.3,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 52,
+   "cat": "mixed",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3395,
+     "cache_read": 13481,
+     "output": 828,
+     "total": 17708
+    },
+    "cost_usd": 0.0245642,
+    "ms": 9053.0,
+    "api_ms": 6550,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP greet",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 13.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 mixed 였다",
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "낱말 greet",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 13.0,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 mixed 였다",
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 53,
+   "cat": "mixed",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4567,
+     "cache_read": 13469,
+     "output": 1330,
+     "total": 19370
+    },
+    "cost_usd": 0.0342698,
+    "ms": 10979.1,
+    "api_ms": 8141,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "WALP capability",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 12.8,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 mixed 였다",
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "낱말 greet",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 12.8,
+    "api_ms": null,
+    "turns": null,
+    "front_error": "잡담으로 답했는데 mixed 였다",
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 54,
+   "cat": "out_of_scope",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7404,
+     "output": 181,
+     "total": 7587
+    },
+    "cost_usd": 0.0032948,
+    "ms": 5144.3,
+    "api_ms": 2770,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1342,
+     "cache_read": 6062,
+     "output": 219,
+     "total": 7625
+    },
+    "cost_usd": 0.008774400000000002,
+    "ms": 5244.5,
+    "api_ms": 2960,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7404,
+     "output": 181,
+     "total": 7587
+    },
+    "cost_usd": 0.0032948,
+    "ms": 5144.3,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 55,
+   "cat": "out_of_scope",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7404,
+     "output": 135,
+     "total": 7541
+    },
+    "cost_usd": 0.0028348,
+    "ms": 4171.2,
+    "api_ms": 1985,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1342,
+     "cache_read": 6062,
+     "output": 140,
+     "total": 7546
+    },
+    "cost_usd": 0.0079844,
+    "ms": 4240.2,
+    "api_ms": 1983,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7404,
+     "output": 135,
+     "total": 7541
+    },
+    "cost_usd": 0.0028348,
+    "ms": 4171.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 56,
+   "cat": "clock",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1341,
+     "cache_read": 6062,
+     "output": 361,
+     "total": 7766
+    },
+    "cost_usd": 0.010190399999999999,
+    "ms": 5889.2,
+    "api_ms": 3634,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": false,
+    "error": null
+   },
+   "W": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.6,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": true,
+    "error": null
+   },
+   "R": {
+    "by": "walp",
+    "route": "시각 변환",
+    "tokens": {
+     "input": 0,
+     "cache_creation": 0,
+     "cache_read": 0,
+     "output": 0,
+     "total": 0
+    },
+    "cost_usd": 0.0,
+    "ms": 0.6,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 57,
+   "cat": "form",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1346,
+     "cache_read": 6062,
+     "output": 48,
+     "total": 7458
+    },
+    "cost_usd": 0.0070804,
+    "ms": 3576.2,
+    "api_ms": 1343,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7408,
+     "output": 49,
+     "total": 7459
+    },
+    "cost_usd": 0.0019756,
+    "ms": 3582.6,
+    "api_ms": 1273,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1346,
+     "cache_read": 6062,
+     "output": 48,
+     "total": 7458
+    },
+    "cost_usd": 0.0070804,
+    "ms": 3576.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 58,
+   "cat": "form",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1341,
+     "cache_read": 6062,
+     "output": 161,
+     "total": 7566
+    },
+    "cost_usd": 0.0081904,
+    "ms": 4299.8,
+    "api_ms": 2096,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 0,
+     "cache_read": 7403,
+     "output": 88,
+     "total": 7493
+    },
+    "cost_usd": 0.0023646,
+    "ms": 4017.9,
+    "api_ms": 1658,
+    "turns": 1,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 2,
+     "cache_creation": 1341,
+     "cache_read": 6062,
+     "output": 161,
+     "total": 7566
+    },
+    "cost_usd": 0.0081904,
+    "ms": 4299.8,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  },
+  {
+   "i": 59,
+   "cat": "plan",
+   "C": {
+    "by": "claude",
+    "route": "Claude 만",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3232,
+     "cache_read": 14858,
+     "output": 1429,
+     "total": 19523
+    },
+    "cost_usd": 0.0301976,
+    "ms": 12084.2,
+    "api_ms": 8896,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "W": {
+    "by": "claude",
+    "route": "WALP 모름 -> Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 4598,
+     "cache_read": 13491,
+     "output": 1477,
+     "total": 19570
+    },
+    "cost_usd": 0.0358682,
+    "ms": 12203.2,
+    "api_ms": 9284,
+    "turns": 2,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   },
+   "R": {
+    "by": "claude",
+    "route": "Claude",
+    "tokens": {
+     "input": 4,
+     "cache_creation": 3232,
+     "cache_read": 14858,
+     "output": 1429,
+     "total": 19523
+    },
+    "cost_usd": 0.0301976,
+    "ms": 12084.2,
+    "api_ms": null,
+    "turns": null,
+    "front_error": null,
+    "clock_ok": null,
+    "error": null
+   }
+  }
+ ]
+}
