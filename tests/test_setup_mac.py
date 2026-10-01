@@ -78,6 +78,18 @@ class SetupMac(unittest.TestCase):
         self.assertEqual(sum(1 for x in log if x.startswith("gemini mcp add")), 2)   # 두 번 돌렸다 -- 지우고 다시 건다
         self.assertEqual(sum(1 for x in log if x.startswith("gemini mcp remove")), 2)
 
+    def test_Claude_Code_에_훅을_하나_건다(self):
+        import json
+        d = json.loads((self.home / ".claude" / "settings.json").read_text())
+        hooks = [h["command"] for g in d["hooks"]["UserPromptSubmit"] for h in g["hooks"]]
+        self.assertEqual(len(hooks), 1, hooks)                       # 두 번 돌렸어도 하나
+        r = subprocess.run(hooks[0], shell=True, input='{"prompt": "안녕하세요"}', env=self.env, capture_output=True,
+                           text=True, timeout=60)
+        self.assertEqual(json.loads(r.stdout)["decision"], "block")    # 건 명령이 실제로 돈다
+        r = subprocess.run(hooks[0], shell=True, input='{"prompt": "이 함수 고쳐줘"}', env=self.env, capture_output=True,
+                           text=True, timeout=60)
+        self.assertEqual(r.stdout.strip(), "")
+
     def test_로그인이_없으면_말한다(self):
         self.assertIn("gemini 로그인이 아직이다", self.runs[0].stderr)
 
