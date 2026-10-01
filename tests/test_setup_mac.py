@@ -65,6 +65,10 @@ class SetupMac(unittest.TestCase):
                            "WORLDPLAN_LEDGER_ROOT": str(self.tmp / "led")}, capture_output=True, text=True, timeout=120)
         self.assertEqual(r.returncode, 0, r.stderr)
         self.assertIn("02:00", r.stdout)
+        r = subprocess.run([str(self.home / ".local" / "bin" / "walp-front"), "route", "안녕"], env=self.env,
+                           capture_output=True, text=True, timeout=120)
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertIn('"act": "greet"', r.stdout)                   # walp 가 의존성으로 깔렸고 C++ 빌드 없이 돈다
 
     def test_MCP_를_user_범위로_건다(self):
         log = self.log.read_text().splitlines()
