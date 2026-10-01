@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>World Schedule Planner</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/app.css">
+<script src="/app.js" defer></script>
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>World Schedule Planner</h1>
+    <p class="sub">생성자와 심판을 나눈다 · 심판은 LLM 이 아니다 · 기본은 거절</p>
+  </div>
+  <label class="tok">토큰 <input id="token" type="password" autocomplete="off" placeholder="WORLDPLAN_TOKEN (없으면 비움)"></label>
+</header>
+
+<main class="grid">
+  <section class="card" aria-labelledby="in-h">
+    <h2 id="in-h">요청</h2>
+    <p class="hint">모든 시각에 오프셋을 붙인다(<code>+09:00</code>, <code>Z</code>). 오프셋이 없으면 거절한다.</p>
+    <textarea id="req" spellcheck="false" aria-label="요청 JSON"></textarea>
+    <div class="row">
+      <button id="plan" class="primary">계획 세우기</button>
+      <button id="sample">예시 다시 넣기</button>
+      <button id="ledger">원장</button>
+    </div>
+    <details>
+      <summary>직접 짠 계획을 심판에 올리기</summary>
+      <p class="hint"><code>{"event_id": "2026-10-05T10:00Z", ...}</code></p>
+      <textarea id="assign" class="small" spellcheck="false" aria-label="배정 JSON"></textarea>
+      <button id="verify">판정만 받기</button>
+    </details>
+    <details>
+      <summary>회의 하나 -- 공통 시간 찾기</summary>
+      <p class="hint">위 요청의 participants · horizon 을 쓴다.</p>
+      <div class="row">
+        <label>길이(분) <input id="dur" type="number" min="1" max="1440" value="60"></label>
+        <label>참가자(쉼표, 비우면 전원) <input id="who" type="text"></label>
+      </div>
+      <button id="slots">찾기</button>
+    </details>
+  </section>
+
+  <section class="card" aria-labelledby="out-h" aria-live="polite">
+    <h2 id="out-h">판정</h2>
+    <div id="out"><p class="hint">아직 아무것도 재지 않았다.</p></div>
+  </section>
+</main>
+</body>
+</html>
