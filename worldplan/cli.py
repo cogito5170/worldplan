@@ -5,6 +5,8 @@
     worldplan serve [--host H] [--port P]       웹 화면 + REST + MCP(HTTP)
     worldplan mcp                               MCP stdio 서버
     worldplan ledger                            원장 사슬 검사 (0=성함 1=끊김)
+    worldplan ui-build                          gentleMonster 로 화면 토큰을 다시 짓는다(GENTLE_MONSTER_HOME)
+    worldplan ui-check                          gentleMonster 심판으로 화면을 잰다 (0=V 전부 성립 1=아님)
 """
 from __future__ import annotations
 
@@ -28,6 +30,8 @@ def main(argv=None) -> int:
     a = sub.add_parser("serve"); a.add_argument("--host"); a.add_argument("--port", type=int)
     sub.add_parser("mcp")
     sub.add_parser("ledger")
+    sub.add_parser("ui-build")
+    sub.add_parser("ui-check")
     args = ap.parse_args(argv)
 
     if args.cmd == "plan":
@@ -42,6 +46,16 @@ def main(argv=None) -> int:
         from .mcp import run_stdio
         run_stdio()
         return 0
+    elif args.cmd == "ui-build":
+        from . import ui_theme
+        t = ui_theme.build()
+        print(json.dumps(t["color"], ensure_ascii=False))
+        return 0
+    elif args.cmd == "ui-check":
+        from . import ui_theme
+        r = ui_theme.check()
+        print(json.dumps(r, ensure_ascii=False, indent=1))
+        return 0 if all(r["V"].values()) else 1
     else:
         r = engine.ledger_status(10)
         print(json.dumps(r, ensure_ascii=False, indent=1))

@@ -34,8 +34,9 @@ class Http(unittest.TestCase):
             return e.code, dict(e.headers), e.read()
 
     def test_화면과_정적_파일(self):
-        for path, needle in (("/", b"World Schedule Planner"), ("/app.js", b"/api/plan"),
-                             ("/app.css", b"--bg"), ("/sample.json", b"kickoff")):
+        for path, needle in (("/", b"<h1>worldplan</h1>"), ("/app.js", b"/api/assistant"),
+                             ("/app.css", b"var(--bg)"), ("/tokens.css", b"--accent:"), ("/tokens.json", b"$value"),
+                             ("/sample.json", b"kickoff")):
             st, h, b = self.req(path)
             self.assertEqual(st, 200, path); self.assertIn(needle, b)
             self.assertIn("default-src 'self'", h["Content-Security-Policy"])

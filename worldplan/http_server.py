@@ -6,6 +6,7 @@
     POST /api/verify     {request, assignments, claimed_cost?}
     POST /api/slots      find_common_slots 인자
     POST /api/clock      {instant, zones}
+    POST /api/assistant  {q, request?}  자연어 도우미(WALP 앞단 + Claude) -- assistant.py
     GET  /api/ledger     원장 상태
     GET  /api/describe   심판이 재는 것 / 못 재는 것
     POST /mcp            MCP JSON-RPC (Streamable HTTP, JSON 응답)
@@ -34,6 +35,8 @@ MAX_BODY = 1_000_000
 _FILES = {"/": ("index.html", "text/html; charset=utf-8"),
           "/app.js": ("app.js", "text/javascript; charset=utf-8"),
           "/app.css": ("app.css", "text/css; charset=utf-8"),
+          "/tokens.css": ("tokens.css", "text/css; charset=utf-8"),
+          "/tokens.json": ("tokens.json", "application/json; charset=utf-8"),
           "/sample.json": ("sample.json", "application/json; charset=utf-8")}
 
 
@@ -136,7 +139,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         path = self.path.split("?", 1)[0]
-        if path not in ("/mcp", "/api/plan", "/api/verify", "/api/slots", "/api/clock"):
+        if path not in ("/mcp", "/api/plan", "/api/verify", "/api/slots", "/api/clock", "/api/assistant"):
             self._json(404, {"error": "없다"})
             return
         if not self._guard():
@@ -157,6 +160,14 @@ class Handler(BaseHTTPRequestHandler):
             self._json(200, engine.common_slots(body))
         elif path == "/api/clock":
             self._json(200, engine.world_clock(body.get("instant"), body.get("zones")))
+        elif path == "/api/assistant":
+            q = body.get("q")
+            if not isinstance(q, str) or not q.strip() or len(q) > 2000:
+                self._json(400, {"error": "q: 1~2000 글자의 말"})
+                return
+            req = body.get("request") if isinstance(body.get("request"), dict) else None
+            from . import assistant
+            self._json(200, assistant.default().ask(q, req))
 
     def _mcp(self, msg):
         pv = self.headers.get("MCP-Protocol-Version")
