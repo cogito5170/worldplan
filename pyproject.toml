@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "worldplan"
+version = "0.1.0"
+description = "World schedule planning engine: generator/judge split, deterministic judge, MCP + web frontend"
+readme = "README.md"
+requires-python = ">=3.10"
+# 엔진은 표준 라이브러리만 쓴다. tzdata 는 시스템 zoneinfo 가 없는 이미지(slim 등)를 위한 것 --
+# zoneinfo 는 시스템 것을 먼저 쓰고, 없을 때만 이것을 쓴다. 사람에게 설치를 시키지 않는다.
+dependencies = ["tzdata>=2024.1"]
+
+[project.scripts]
+worldplan = "worldplan.cli:main"
+
+[tool.setuptools]
+packages = ["worldplan"]
+
+[tool.setuptools.package-data]
+worldplan = ["static/*"]
