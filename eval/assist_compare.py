@@ -1,6 +1,9 @@
-"""Claude 만 vs WALP 앞단 + Claude -- 토큰 · 응답 시간 · 앞단 오답. 사전등록 eval/PREREG_앞단비교.md 그대로.
+"""Claude 만 vs 앞단 + Claude -- 토큰 · 응답 시간 · 앞단 오답. 사전등록 eval/PREREG_앞단비교.md (v1) · PREREG_앞단비교_v2.md.
 
-    WORLDPLAN_WALP_HOME=... WORLDPLAN_WALP_MODEL=... python3 eval/assist_compare.py <봉인.tsv> --out eval/results/assist_v1.json
+    WORLDPLAN_WALP_HOME=... WORLDPLAN_WALP_MODEL=... python3 eval/assist_compare.py <봉인.tsv> --set v1 --out eval/results/assist_v1.json
+
+    v1  온라인: C(Claude 만) · W(시각 센서 + WALP 잡담)   오프라인(길만): R(시각 센서 + 낱말)
+    v2  온라인: C(Claude 만, 지금 시각을 받음) · K(시각 센서만)   오프라인(길만): W · R
 
 요청마다 두 조건을 **무작위 순서로 붙여서** 돌린다(캐시 · 시간대 표류를 두 조건이 같이 받게). 줄마다 체크포인트를 남겨
 끊겨도 이어 돈다(WORLDPLAN_CKPT, 기본 /tmp/worldplan-ckpt).
@@ -25,7 +28,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from worldplan import assistant as A      # noqa: E402
 from worldplan import engine              # noqa: E402
 
-SHA = "da1fa278372d24cee29b0a560b4f1ed0217f4aa9537a6bb3eb8854fbf3f51d63"
+SHAS = {"v1": "da1fa278372d24cee29b0a560b4f1ed0217f4aa9537a6bb3eb8854fbf3f51d63",
+        "v2": "9bc0251ceca0e5e7ae3a6c365fbf1bb2d0e4521e231af892d52b760f0b9a7cc5"}
+ONLINE = {"v1": "W", "v2": "K"}         # C 와 짝지어 실제로 Claude 를 부르는 처치
 SAMPLE = Path(__file__).resolve().parent.parent / "worldplan" / "static" / "sample.json"
 CKPT = Path(os.environ.get("WORLDPLAN_CKPT") or "/tmp/worldplan-ckpt")
 
@@ -40,8 +45,8 @@ KEYWORDS = {
 }
 
 
-def rows(path: Path) -> list:
-    if hashlib.sha256(path.read_bytes()).hexdigest() != SHA:
+def rows(path: Path, sha: str) -> list:
+    if hashlib.sha256(path.read_bytes()).hexdigest() != sha:
         raise SystemExit("봉인 sha 가 다르다 -- 돌리지 않는다")
     out = []
     for i, line in enumerate(path.read_text(encoding="utf-8").splitlines()):
@@ -130,10 +135,10 @@ def wilson_upper(k: int, n: int, z: float = 1.645) -> float:
     return (p + z * z / (2 * n) + z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n))) / (1 + z * z / n)
 
 
-def summarize(recs: list) -> dict:
+def summarize(recs: list, T: str = "W") -> dict:
     n = len(recs)
-    out = {"n": n}
-    for k in ("C", "W", "R"):
+    out = {"n": n, "treatment": T}
+    for k in [k for k in ("C", "K", "W", "R") if k in recs[0]]:
         tok = [r[k]["tokens"]["total"] for r in recs]
         ms = [r[k]["ms"] for r in recs]
         out[k] = {"tokens_sum": sum(tok), "tokens_mean": sum(tok) / n,
@@ -144,91 +149,113 @@ def summarize(recs: list) -> dict:
                   "claude_errors": sum(1 for r in recs if r[k].get("error"))}
         out[k]["front_error_rate"] = out[k]["front_errors"] / n
         out[k]["front_error_wilson95"] = wilson_upper(out[k]["front_errors"], n)
-    dt_ = [r["W"]["tokens"]["total"] - r["C"]["tokens"]["total"] for r in recs]
-    dm = [r["W"]["ms"] - r["C"]["ms"] for r in recs]
+    dt_ = [r[T]["tokens"]["total"] - r["C"]["tokens"]["total"] for r in recs]
+    dm = [r[T]["ms"] - r["C"]["ms"] for r in recs]
     out["H1"] = {"mean_diff_tokens": sum(dt_) / n, "upper95": boot_upper(dt_)}
     out["H1"]["holds"] = out["H1"]["upper95"] < 0
     out["H2"] = {"mean_diff_ms": sum(dm) / n, "upper95": boot_upper(dm)}
     out["H2"]["holds"] = out["H2"]["upper95"] < 0
-    out["H3"] = {"rate": out["W"]["front_error_rate"], "holds": out["W"]["front_error_rate"] <= 0.05}
+    out["H3"] = {"rate": out[T]["front_error_rate"], "holds": out[T]["front_error_rate"] <= 0.05}
     out["decision_front_on"] = out["H1"]["holds"] and out["H3"]["holds"]
-    both = [r for r in recs if r["W"].get("by") == "claude"]
+    both = [r for r in recs if r[T].get("by") == "claude"]
     if both:   # 대조: 둘 다 Claude 로 간 줄에서 차이는 잡음뿐이어야 한다
-        d = [r["W"]["tokens"]["total"] - r["C"]["tokens"]["total"] for r in both]
-        dm2 = [r["W"]["ms"] - r["C"]["ms"] for r in both]
+        d = [r[T]["tokens"]["total"] - r["C"]["tokens"]["total"] for r in both]
+        dm2 = [r[T]["ms"] - r["C"]["ms"] for r in both]
         out["null_check_escalated"] = {"n": len(both), "mean_diff_tokens": sum(d) / len(d),
                                        "mean_diff_ms": sum(dm2) / len(dm2)}
     cats = {}
     for r in recs:
-        c = cats.setdefault(r["cat"], {"n": 0, "C_tok": 0, "W_tok": 0, "C_ms": 0.0, "W_ms": 0.0, "W_front": 0,
-                                       "W_front_err": 0, "R_front": 0, "R_front_err": 0, "C_clock_ok": 0, "W_clock_ok": 0})
+        c = cats.setdefault(r["cat"], {"n": 0})
         c["n"] += 1
-        c["C_tok"] += r["C"]["tokens"]["total"]; c["W_tok"] += r["W"]["tokens"]["total"]
-        c["C_ms"] += r["C"]["ms"]; c["W_ms"] += r["W"]["ms"]
-        c["W_front"] += r["W"].get("by") == "walp"; c["W_front_err"] += bool(r["W"].get("front_error"))
-        c["R_front"] += r["R"].get("by") == "walp"; c["R_front_err"] += bool(r["R"].get("front_error"))
-        if r["cat"] == "clock":
-            c["C_clock_ok"] += bool(r["C"].get("clock_ok")); c["W_clock_ok"] += bool(r["W"].get("clock_ok"))
+        for k in [k for k in ("C", "K", "W", "R") if k in r]:
+            c[f"{k}_tok"] = c.get(f"{k}_tok", 0) + r[k]["tokens"]["total"]
+            c[f"{k}_ms"] = c.get(f"{k}_ms", 0.0) + r[k]["ms"]
+            c[f"{k}_front"] = c.get(f"{k}_front", 0) + (r[k].get("by") == "walp")
+            c[f"{k}_front_err"] = c.get(f"{k}_front_err", 0) + bool(r[k].get("front_error"))
+            if r["cat"] == "clock" and "clock_ok" in r[k]:
+                c[f"{k}_clock_ok"] = c.get(f"{k}_clock_ok", 0) + bool(r[k]["clock_ok"])
     out["by_category"] = cats
     return out
 
 
 # ---------------- 돌리기 ----------------
 
+def offline(name: str, row: dict, req: dict, res: dict, walp) -> dict:
+    """Claude 를 부르지 않고 길만 고른다. Claude 로 갈 줄은 C 에서 잰 값을 그대로 쓴다."""
+    at = dt.datetime.now(dt.timezone.utc)
+    if name == "R":
+        r = route_R(row["msg"], req, at)
+    else:
+        t0 = time.perf_counter()
+        r = A.Assistant(walp=walp, claude=None, front="walp")._ask(row["msg"], req, at)
+        r = r if r.get("by") == "walp" else None
+        if r:
+            r["ms"] = round((time.perf_counter() - t0) * 1000, 1)
+    if r:
+        r.update(tokens=A._zero(), cost_usd=0.0)
+        r.setdefault("ms", 5.0)
+    else:
+        r = {k: res["C"][k] for k in ("tokens", "cost_usd", "ms", "answer")} | {"by": "claude", "route": "Claude"}
+    r["front_error"] = front_error(r, row, at)
+    if row["cat"] == "clock" and r["by"] == "walp":
+        r["clock_ok"] = clock_ok(r["answer"], row["gold"], at)
+    elif row["cat"] == "clock":
+        r["clock_ok"] = res["C"].get("clock_ok")
+    return r
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("sealed")
+    ap.add_argument("--set", choices=sorted(SHAS), required=True)
     ap.add_argument("--out")
     a = ap.parse_args()
-    data = rows(Path(a.sealed))
+    data = rows(Path(a.sealed), SHAS[a.set])
+    T = ONLINE[a.set]
     req = json.loads(SAMPLE.read_text(encoding="utf-8"))
     walp = A.load_walp()
     if not walp:
         raise SystemExit("WALP 가 없다 -- WORLDPLAN_WALP_HOME · WORLDPLAN_WALP_MODEL")
     claude = A.ClaudeCLI()
-    C = A.Assistant(walp=None, claude=claude, front=False)
-    W = A.Assistant(walp=walp, claude=claude, front=True)
-    CKPT.mkdir(parents=True, exist_ok=True)
+    arms = {"C": A.Assistant(walp=None, claude=claude, front="off"),
+            T: A.Assistant(walp=walp, claude=claude, front="walp" if T == "W" else "clock")}
+    ck = CKPT / a.set
+    ck.mkdir(parents=True, exist_ok=True)
     rng = random.Random(20261001)
     orders = [rng.random() < 0.5 for _ in data]
     recs = []
     for row, c_first in zip(data, orders):
-        p = CKPT / f"row{row['i']:03d}.json"
+        p = ck / f"row{row['i']:03d}.json"
         if p.exists():
             recs.append(json.loads(p.read_text(encoding="utf-8")))
             continue
         res = {}
-        for k in (("C", "W") if c_first else ("W", "C")):
+        for k in (("C", T) if c_first else (T, "C")):
             at = dt.datetime.now(dt.timezone.utc)
-            r = (C if k == "C" else W).ask(row["msg"], req, now=at)
+            r = arms[k].ask(row["msg"], req, now=at)
             r["at"] = at.isoformat()
             r["front_error"] = front_error(r, row, at)
             if row["cat"] == "clock":
                 r["clock_ok"] = clock_ok(r["answer"], row["gold"], at)
             res[k] = r
-        at = dt.datetime.now(dt.timezone.utc)
-        r = route_R(row["msg"], req, at)
-        if r:
-            r.update(tokens=A._zero(), cost_usd=0.0, ms=res["W"]["ms"] if res["W"]["by"] == "walp" else 5.0)
-        else:
-            r = {k: res["C"][k] for k in ("tokens", "cost_usd", "ms", "answer")} | {"by": "claude", "route": "Claude"}
-        r["front_error"] = front_error(r, row, at)
-        res["R"] = r
+        for k in [k for k in ("W", "R") if k not in res]:
+            res[k] = offline(k, row, req, res, walp)
         rec = {"i": row["i"], "cat": row["cat"], "c_first": c_first, **res}
         p.write_text(json.dumps(rec, ensure_ascii=False), encoding="utf-8")
         recs.append(rec)
         print(f"{row['i']:3d} {row['cat']:12s} C {res['C']['tokens']['total']:6d}tok {res['C']['ms']:8.0f}ms | "
-              f"W {res['W']['route']:18s} {res['W']['tokens']['total']:6d}tok {res['W']['ms']:8.0f}ms"
-              f"{' FRONT-ERR ' + res['W']['front_error'] if res['W']['front_error'] else ''}", flush=True)
-    s = summarize(recs)
+              f"{T} {res[T]['route']:18s} {res[T]['tokens']['total']:6d}tok {res[T]['ms']:8.0f}ms"
+              f"{' FRONT-ERR ' + res[T]['front_error'] if res[T]['front_error'] else ''}", flush=True)
+    s = summarize(recs, T)
     s["model"] = sorted({r["C"].get("model") for r in recs if r["C"].get("model")})
-    s["sealed_sha256"] = SHA
+    s["sealed_sha256"] = SHAS[a.set]
+    keys = [k for k in ("C", "K", "W", "R") if k in recs[0]]
     if a.out:
         Path(a.out).parent.mkdir(parents=True, exist_ok=True)
         Path(a.out).write_text(json.dumps({"summary": s, "rows": [
             {"i": r["i"], "cat": r["cat"], **{k: {kk: r[k].get(kk) for kk in ("by", "route", "tokens", "cost_usd", "ms",
                                                                                "api_ms", "turns", "front_error", "clock_ok", "error")}
-                                              for k in ("C", "W", "R")}} for r in recs]},
+                                              for k in keys}} for r in recs]},
             ensure_ascii=False, indent=1), encoding="utf-8")
     print(json.dumps({k: v for k, v in s.items() if k != "by_category"}, ensure_ascii=False, indent=1))
     return 0

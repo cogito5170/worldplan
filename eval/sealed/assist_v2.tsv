@@ -1,0 +1,61 @@
+category	message	gold
+form	design review 몇 분짜리야	
+mixed	수고 많아요 ㅎㅎ lu랑 sam 30분 겹치는 시간 좀 봐줘요	
+form	kim 휴가 언제였지?	
+knowledge	브라질은 아직 일광절약시간 써?	
+knowledge	유럽은 서머타임 언제 끝나요 올해?	
+clock	시드니 10월 5일 오전 9시는 서울 기준 몇시?	{"src_tz": "Australia/Sydney", "src_local": "2026-10-05T09:00", "dst_tz": "Asia/Seoul", "dst_local": "2026-10-05T07:00"}
+form	weekly wrap은 어떤 회의 끝나야 할 수 있어?	
+plan	lu 빼고 latam sync를 sam 혼자 하는 걸로 바꿔줘... 아니 그건 말이 안되나 그냥 lu를 optional로	
+plan	일정 짜줘	
+smalltalk	오 대박 빠르다 ㄳ	
+plan	새 사람 추가: jin, Asia/Tokyo, 9시~18시 근무. 킥오프 필수 참석으로	
+out_of_scope	비트코인 전망 어때	
+clock	what time is it in Tokyo right now	{"src_tz": null, "src_local": null, "dst_tz": "Asia/Tokyo", "dst_local": "now"}
+out_of_scope	이 문장 영어로 번역해줘: 회의록 공유 부탁드립니다	
+clock	LA 10월 6일 오후 5시면 kim은 몇 시ㅇ야?	{"src_tz": "America/Los_Angeles", "src_local": "2026-10-06T17:00", "dst_tz": "Asia/Seoul", "dst_local": "2026-10-07T09:00"}
+mixed	고마워~ 근데 하나만 더, design review를 목요일로 바꿀 수 있어?	
+clock	anna 기준 10/7 09:30이면 sam한테는 몇시임?	{"src_tz": "Europe/Berlin", "src_local": "2026-10-07T09:30", "dst_tz": "America/New_York", "dst_local": "2026-10-07T03:30"}
+form	what's the planning horizon right now	
+form	킥오프에서 lu 필수야 선택이야	
+knowledge	What's the IANA time zone database?	
+clock	상파울루 10/9 14:00 -> 서울 시간으로 바꿔줘	{"src_tz": "America/Sao_Paulo", "src_local": "2026-10-09T14:00", "dst_tz": "Asia/Seoul", "dst_local": "2026-10-10T02:00"}
+smalltalk	이거 어떻게 쓰는 거예요? 처음이라	
+mixed	ㄱㅅㄱㅅ 마지막으로 판정(judge) 결과가 왜 실패인지 설명해줘	
+knowledge	날짜변경선 넘으면 하루가 왜 사라져?	
+mixed	오 굿굿. 그럼 weekly wrap은 토요일 말고 금요일로 다시 짜줘	
+plan	이 계획 문제 없는지 검증 좀	
+form	kim 하루 최대 회의 시간 몇분으로 돼있음?	
+mixed	hi there, could you check whether the current plan breaks anyone's working hours?	
+out_of_scope	삼성전자 지금 사도 될까?	
+plan	sam 아침 6시 회의는 좀 빼줘 너무 이름 ㅠ 9시 이후로만 잡아	
+clock	서울 10월 6일 오후 3시면 뉴욕은 몇 시야?	{"src_tz": "Asia/Seoul", "src_local": "2026-10-06T15:00", "dst_tz": "America/New_York", "dst_local": "2026-10-06T02:00"}
+mixed	좋은 아침입니다. 오늘 kim 일정 기준으로 전체 다시 배치해 주세요	
+out_of_scope	파이썬으로 피보나치 함수 짜줘	
+out_of_scope	write me a cover letter for a PM job	
+smalltalk	ㅂㅂ 내일 또 올게	
+smalltalk	좋은 아침~	
+out_of_scope	가을에 관한 시 한 편 써줘	
+plan	anna랑 kim 둘 다 되는 90분짜리 빈 시간 찾아줘	
+smalltalk	넌 누구야?	
+plan	kim이 10/5 오후에도 바빠졌어 14시부터 16시까지 KST. 반영해서 재배치 부탁	
+form	지금 참석자 누구누구 있어?	
+smalltalk	안녕하세요	
+clock	kim이 10월 8일 오전 10시에 하자는데 그거 lu 시간으로 몇 시야	{"src_tz": "Europe/Berlin", "src_local": "2026-10-08T10:00", "dst_tz": "America/Sao_Paulo", "dst_local": "2026-10-08T05:00"}
+clock	convert 2026-10-07 23:00 Seoul to Berlin time pls	{"src_tz": "Asia/Seoul", "src_local": "2026-10-07T23:00", "dst_tz": "Europe/Berlin", "dst_local": "2026-10-07T16:00"}
+knowledge	ISO 주차(week number)는 어떻게 계산해?	
+clock	If it's 8pm on Oct 31 2026 in New York, what time is it in London?	{"src_tz": "America/New_York", "src_local": "2026-10-31T20:00", "dst_tz": "Europe/London", "dst_local": "2026-11-01T00:00"}
+smalltalk	고마워요 덕분에 살았네요 ㅎㅎ	
+clock	지금 베를린 몇 시?	{"src_tz": null, "src_local": null, "dst_tz": "Europe/Berlin", "dst_local": "now"}
+knowledge	한국은 서머타임 안 하지?	
+clock	kim 쪽 10월 9일 오후 2시가 한국시간으로 몇시인지	{"src_tz": "Europe/Berlin", "src_local": "2026-10-09T14:00", "dst_tz": "Asia/Seoul", "dst_local": "2026-10-09T21:00"}
+out_of_scope	점심 메뉴 추천 좀	
+plan	Can you reschedule design review so it's not on Friday?	
+knowledge	UTC랑 GMT 차이가 뭐임	
+out_of_scope	내일 서울 날씨 어때	
+knowledge	서머타임은 왜 하는 거야?	
+form	lu는 선호 시간 따로 설정 안 돼 있지?	
+mixed	안녕! 오늘 처음 써보는데 킥오프 언제가 제일 좋을지 찾아줄래?	
+plan	weekly wrap 시간을 60분으로 늘려서 다시 짜볼래?	
+plan	킥오프를 10월 6일로 옮기고 다시 계획해줘	
+smalltalk	what can you do?	

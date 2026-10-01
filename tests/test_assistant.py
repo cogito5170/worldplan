@@ -17,8 +17,9 @@ class FakeClaude:
     def __init__(self):
         self.calls = []
 
-    def ask(self, text, request, today):
+    def ask(self, text, request, today, now_utc=None):
         self.calls.append(text)
+        self.now = now_utc
         return {"answer": "가짜", "tokens": {"input": 1, "cache_creation": 0, "cache_read": 10, "output": 2, "total": 13},
                 "cost_usd": 0.001}
 
@@ -37,13 +38,14 @@ class Clock(unittest.TestCase):
         self.assertIn("02:00", self.ans("서울 2026-10-05 오후 3시는 뉴욕 몇 시야?"))
         self.assertIn("2026-10-04 15:00", self.ans("시드니 오전 9시는 LA 몇 시야 10/5"))
 
-    def test_기준이_뒤에_와도_원천이다(self):
-        a = self.ans("10월 8일 오전 10시 kim 은 몇 시야? 런던 기준으로")
-        self.assertTrue(a.startswith("런던 2026-10-08 10:00"), a)
+    def test_기준_은_뜻이_둘이라_손대지_않는다(self):
+        # 봉인 v1 #11: '뉴욕 오전 9시는 서울 기준 몇시' 의 서울은 목적지였는데 원천으로 읽었다
+        self.assertIsNone(A.clock_answer("11월 2일 뉴욕 오전 9시는 서울 기준 몇시임", sample(), NOW))
+        self.assertIsNone(A.clock_answer("10월 8일 오전 10시 kim 은 몇 시야? 런던 기준으로", sample(), NOW))
 
     def test_사람은_체류지를_따른다(self):
         # kim 은 10-08..09 베를린에 있다 -- 서울이 아니다
-        self.assertIn("CEST", self.ans("런던 기준 오전 10시는 kim 몇 시? 10월 8일"))
+        self.assertIn("CEST", self.ans("런던 오전 10시는 kim 몇 시? 10월 8일"))
         self.assertIn("KST", self.ans("kim 쪽은 지금 몇 시?"))
 
     def test_정해지지_않으면_손대지_않는다(self):
@@ -59,7 +61,7 @@ class Clock(unittest.TestCase):
 class Layers(unittest.TestCase):
     def test_세_층(self):
         fc = FakeClaude()
-        a = A.Assistant(walp=FakeWalp(), claude=fc)
+        a = A.Assistant(walp=FakeWalp(), claude=fc, front="walp")
         r = a.ask("안녕", sample(), NOW)
         self.assertEqual((r["by"], r["tokens"]["total"]), ("walp", 0))
         r = a.ask("지금 베를린 몇 시야", sample(), NOW)
@@ -67,6 +69,13 @@ class Layers(unittest.TestCase):
         r = a.ask("다음 주 계획 세워줘", sample(), NOW)
         self.assertEqual((r["by"], r["tokens"]["total"]), ("claude", 13))
         self.assertEqual(fc.calls, ["다음 주 계획 세워줘"])
+        self.assertEqual(fc.now, "2026-10-01T09:00+00:00")   # Claude 에게 지금 시각을 준다(봉인 v1: 안 주면 '지금' 을 못 답했다)
+
+    def test_시각_센서만(self):
+        fc = FakeClaude()
+        a = A.Assistant(walp=FakeWalp(), claude=fc, front="clock")
+        self.assertEqual(a.ask("지금 베를린 몇 시야", sample(), NOW)["by"], "walp")
+        self.assertEqual(a.ask("안녕", sample(), NOW)["route"], "시각 센서 못 정함 -> Claude")   # 잡담층이 없다
 
     def test_앞단을_끄면_전부_Claude(self):
         fc = FakeClaude()
@@ -76,13 +85,16 @@ class Layers(unittest.TestCase):
         self.assertEqual(len(fc.calls), 2)
 
     def test_WALP_가_없으면_그렇다고_적는다(self):
-        a = A.Assistant(walp=None, claude=FakeClaude())
-        self.assertEqual(a.ask("안녕", sample(), NOW)["route"], "앞단 없음 -> Claude")
+        a = A.Assistant(walp=None, claude=FakeClaude(), front="walp")
+        self.assertEqual(a.ask("안녕", sample(), NOW)["route"], "WALP 없음 -> Claude")
+
+    def test_기본은_사전등록의_결정(self):
+        self.assertEqual(A.Assistant(walp=None, claude=FakeClaude()).mode, A.FRONT)
 
 
 class Http(unittest.TestCase):
     def test_api_assistant(self):
-        A._DEFAULT = A.Assistant(walp=FakeWalp(), claude=FakeClaude())
+        A._DEFAULT = A.Assistant(walp=FakeWalp(), claude=FakeClaude(), front="walp")
         srv = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
         threading.Thread(target=srv.serve_forever, daemon=True).start()
         try:

@@ -7,8 +7,10 @@
                   손대지 않고 위로 보낸다 -- 모르는 것은 위로
     Deliberative  Claude(`claude -p`, worldplan MCP 도구). 계획 · 판정 · 질문 · 그 밖의 전부
 
-WALP 가 없으면(환경 변수가 없거나 불러오기 실패) Control 층이 빠지고 그 사실이 답의 route 에 적힌다.
+앞단은 WORLDPLAN_FRONT 로 고른다 -- 기본은 eval/PREREG_앞단비교*.md 의 결정을 따른다.
 
+    WORLDPLAN_FRONT        off(Claude 만) | clock(시각 센서만) | walp(시각 센서 + WALP 잡담)
+                           봉인 v1: walp 는 잡담층이 일정 요청을 가로채(60 중 10) 안전 기준에서 졌다 -- 기본에서 뺐다
     WORLDPLAN_WALP_HOME    SE 저장소 뿌리(walp 패키지가 있는 곳)
     WORLDPLAN_WALP_MODEL   학습된 체계 JSON
     WORLDPLAN_CLAUDE       0 이면 Claude 를 부르지 않는다(앞단만)
@@ -254,11 +256,10 @@ def clock_answer(text: str, request: "dict | None", now: dt.datetime) -> "dict |
     if len(places) < 2:
         return None                                       # 어디 기준인지 · 어디로인지 하나가 빠졌다
     h, mi, tpos = t
-    base = [p for p in places if re.match(r"\s*(?:은|는|이|가|의)?\s*(?:시간\s*)?기준", text[p[0] + len(p[1]):])]
-    if len(base) > 1:
-        return None
+    if "기준" in text:
+        return None                                       # '서울 기준' 은 원천일 수도 목적지일 수도 있다(봉인 v1 #11)
     before = [p for p in places if p[0] < tpos]
-    src = base[0] if base else (before[-1] if before else places[0])
+    src = before[-1] if before else places[0]
     dsts = [p for p in places if p is not src]
     if not dsts:
         return None
@@ -329,9 +330,10 @@ class ClaudeCLI:
         self.mcp.write_text(json.dumps({"mcpServers": {"worldplan": {
             "command": sys.executable, "args": ["-m", "worldplan", "mcp"], "env": env}}}), encoding="utf-8")
 
-    def ask(self, text: str, request: "dict | None", today: str) -> dict:
+    def ask(self, text: str, request: "dict | None", today: str, now_utc: "str | None" = None) -> dict:
         sysp = SYSTEM.format(today=today, request=json.dumps(request or {}, ensure_ascii=False, separators=(",", ":")))
-        cmd = ["claude", "-p", text, "--output-format", "json", "--system-prompt", sysp,
+        prompt = f"[now: {now_utc}]\n{text}" if now_utc else text
+        cmd = ["claude", "-p", prompt, "--output-format", "json", "--system-prompt", sysp,
                "--strict-mcp-config", "--mcp-config", str(self.mcp), "--tools", "",
                "--allowedTools", "mcp__worldplan", "--setting-sources", "", "--no-session-persistence"]
         if self.model:
@@ -356,10 +358,19 @@ class ClaudeCLI:
 
 # ---------------- 세 층을 잇는다 ----------------
 
+FRONT = os.environ.get("WORLDPLAN_FRONT", "off")    # off | clock | walp -- eval/PREREG_앞단비교*.md 의 결정을 따른다
+
+
 class Assistant:
-    def __init__(self, walp: "Walp | None | bool" = True, claude: "ClaudeCLI | None | bool" = True, front: bool = True):
-        self.front = front
-        self.walp = load_walp() if walp is True else (walp or None)
+    def __init__(self, walp: "Walp | None | bool" = True, claude: "ClaudeCLI | None | bool" = True,
+                 front: "bool | str | None" = None):
+        front = FRONT if front is None else front
+        front = {True: "walp", False: "off"}.get(front, front)
+        if front not in ("off", "clock", "walp"):
+            raise ValueError(f"front: off | clock | walp, got {front!r}")
+        self.mode = front
+        self.front = front != "off"
+        self.walp = (load_walp() if walp is True else (walp or None)) if front == "walp" else None
         if claude is True:
             claude = None if os.environ.get("WORLDPLAN_CLAUDE") == "0" else ClaudeCLI()
         self.claude = claude or None
@@ -388,8 +399,10 @@ class Assistant:
         if not self.claude:
             return {"answer": "이 말은 Claude 가 답해야 하는데 Claude 가 꺼져 있다.", "by": "none",
                     "route": "Claude 꺼짐", "act": act}
-        r = self.claude.ask(text, request, now.date().isoformat())
-        route = ("WALP 모름 -> Claude" if self.walp else "앞단 없음 -> Claude") if self.front else "Claude 만"
+        r = self.claude.ask(text, request, now.date().isoformat(),
+                            now.astimezone(dt.timezone.utc).isoformat(timespec="minutes"))
+        route = {"off": "Claude 만", "clock": "시각 센서 못 정함 -> Claude",
+                 "walp": "WALP 모름 -> Claude" if self.walp else "WALP 없음 -> Claude"}[self.mode]
         return {**r, "by": "claude", "route": route, "act": act}
 
 
